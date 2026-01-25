@@ -1,0 +1,236 @@
+{
+  "personal": {
+    "name": "Tawona",
+    "title": "Full Stack Software Developer",
+    "subtitle": "Specializing in designing and maintaining scalable, high-performing web and mobile applications. Skilled in e-commerce, AI, and system integration.",
+    "email": "tnrwatida@gmail.com",
+    "phone": "+263783028721",
+    "location": "Harare, Zimbabwe",
+    "avatar": "/images/avatar.png",
+    "resume": "/resume.pdf",
+    "website": "https://tawona-swe.github.io"
+  },
+  "socials": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/tawona-swe",
+      "icon": "github"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/in/tawona-rwatida",
+      "icon": "linkedin"
+    },
+    {
+      "name": "Portfolio",
+      "url": "https://tawona-swe.github.io",
+      "icon": "globe"
+    },
+    {
+      "name": "Email",
+      "url": "mailto:tnrwatida@gmail.com",
+      "icon": "email"
+    }
+  ],
+  "about": {
+    "description": "I'm a passionate Full-stack Software Developer with expertise in designing and maintaining scalable, high-performing web and mobile applications. I specialize in collaborating with cross-functional teams and have extensive experience in e-commerce, AI, and system integration. I graduated with First Class Honors in Software Engineering and have been recognized as the Most Consistent Undergraduate Student in my faculty.",
+    "highlights": [
+      "BSc Hons. Software Engineering (First Class) - University of Zimbabwe",
+      "Most Consistent Undergraduate Student Award",
+      "Key developer of TM Pick n Pay e-commerce platform (100k+ users)",
+      "Delivered 2+ full-featured e-commerce platforms and 10+ websites",
+      "Expert in full-stack development with modern technologies",
+      "Experience with cross-functional teams using Scrum methodologies"
+    ]
+  },
+  "skills": [
+    {
+      "category": "Frontend",
+      "items": [
+        { "name": "JavaScript/TypeScript", "level": 95, "icon": "javascript" },
+        { "name": "React", "level": 92, "icon": "react" },
+        { "name": "Next.js", "level": 90, "icon": "nextjs" },
+        { "name": "React Native", "level": 88, "icon": "reactnative" },
+        { "name": "HTML/CSS", "level": 95, "icon": "html" }
+      ]
+    },
+    {
+      "category": "Backend",
+      "items": [
+        { "name": "PHP/Laravel", "level": 90, "icon": "php" },
+        { "name": "Python/Django", "level": 88, "icon": "python" },
+        { "name": "Java/Spring Boot", "level": 85, "icon": "java" },
+        { "name": "RESTful APIs", "level": 92, "icon": "api" },
+        { "name": "Node.js", "level": 80, "icon": "nodejs" }
+      ]
+    },
+    {
+      "category": "Database & DevOps",
+      "items": [
+        { "name": "MySQL", "level": 90, "icon": "mysql" },
+        { "name": "PostgreSQL", "level": 85, "icon": "postgresql" },
+        { "name": "MongoDB", "level": 82, "icon": "mongodb" },
+        { "name": "Docker", "level": 85, "icon": "docker" },
+        { "name": "AWS", "level": 80, "icon": "aws" }
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "company": "Quatrohaus (Pvt) Ltd",
+      "position": "Full Stack Software Developer",
+      "duration": "Nov 2024 - Present",
+      "description": "Key developer of TM Pick n Pay e-commerce webstore used by over 100k customers. Primary developer of the Gramia web and mobile app. Implementing data encryption and secure authentication systems.",
+      "technologies": ["Next.js", "Laravel", "MySQL", "Docker", "CI/CD", "React Native"]
+    },
+    {
+      "company": "Huawei",
+      "position": "SmartCare Service Engineer (GT)",
+      "duration": "Apr 2025 - Sep 2025",
+      "description": "Power BI, SQL development, Python scripting, and Linux system support for Econet customer experience. Implementing data encryption/secure authentication to CEM SmartCare Econet Platform.",
+      "technologies": ["Power BI", "SQL", "Python", "Linux", "Data Encryption"]
+    },
+    {
+      "company": "Contessasoft (Pvt) Ltd",
+      "position": "Software Developer",
+      "duration": "Aug 2022 - Aug 2023",
+      "description": "Delivered 2+ full-featured e-commerce platforms and over 10 websites. Performance optimization of systems after development. UI/UX design and prototyping. Front-end and Back-end development.",
+      "technologies": ["PHP", "Laravel", "JavaScript", "MySQL", "UI/UX Design"]
+    },
+    {
+      "company": "Olimem Enterprise Solutions (Pvt) Ltd",
+      "position": "Software Development Intern",
+      "duration": "Jul 2024 - Nov 2024",
+      "description": "Developed Laravel + VB apps used by 4+ councils and rural authorities across Zimbabwe. Focused on government and municipal system solutions.",
+      "technologies": ["Laravel", "Visual Basic", "PHP", "MySQL", "Government Systems"]
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "TM Pick n Pay E-commerce Platform",
+      "description": "Key developer of a comprehensive e-commerce webstore and mobile app serving over 100,000 customers. Features include inventory management, payment processing, and customer analytics.",
+      "image": "/images/projects/tm-picknpay-ecommerce.png",
+      "technologies": ["Next.js", "Laravel", "MySQL", "Docker", "CI/CD", "React Native"],
+      "github": "https://github.com/quatrohaus/tmpnp-laravel-backend",
+      "demo": "https://tmpnponline.co.zw",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Gramia School Management System",
+      "description": "Comprehensive school management system with web and mobile applications. Features student management, grade tracking, communication tools, and administrative dashboards.",
+      "image": "/images/projects/gramia.png",
+      "technologies": ["Java", "JavaScript", "Kotlin", "WebFlow", "MySQL"],
+      "github": "https://github.com/tawonaqh/gramia",
+      "demo": "https://gramia.tech",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "AFINET Customer Portal",
+      "description": "Telone, Zol like customer portal where customer can purchase fibre-based operations and data.",
+      "image": "/images/projects/afinet.png",
+      "technologies": ["Laravel", "NextJS", "GitHub Actions CI/CD", "Docker", "MySQL"],
+      "github": "https://github.com/tawonaqh/afinet-customer-portal",
+      "demo": "http://afinetportal.duckdns.org/",
+      "featured": true
+    },
+    {
+      "id": 4,
+      "title": "NLP Patient Referral Mobile App",
+      "description": "AI-powered mobile application for patient referral system using Natural Language Processing. Streamlines healthcare communication and patient data management.",
+      "image": "/images/projects/project-placeholder.png",
+      "technologies": ["React Native", "Django", "NLP", "Python", "PostgreSQL"],
+      "github": "https://github.com/tawona-swe/nlp-patient-referral-v2.0",
+      "demo": "https://github.com/tawona-swe/nlp-patient-referral-v2.0",
+      "featured": true
+    },
+    {
+      "id": 5,
+      "title": "Housing Management System",
+      "description": "Complete housing management solution with tenant management, rent tracking, maintenance requests, and financial reporting capabilities.",
+      "image": "/images/projects/housing-management-system.jpeg",
+      "technologies": ["Laravel", "JavaScript", "Blade", "MySQL", "Bootstrap"],
+      "github": "https://github.com/epten08/housing",
+      "demo": "#",
+      "featured": false
+    },
+    {
+      "id": 6,
+      "title": "Taxcul App",
+      "description": "A comprehensive web application for calculating various types of taxes in Zimbabwe. Built with Next.js, React, and modern web technologies.",
+      "image": "/images/projects/taxcul.png",
+      "technologies": ["Laravel", "NextJS", "Vercel", "MySQL"],
+      "github": "https://github.com/tawona-swe/facebook-marketplace-bot",
+      "demo": "https://github.com/tawona-swe/facebook-marketplace-bot",
+      "featured": false
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Delbert Chimbandi",
+      "role": "COO at Quatrohaus (Pvt) Ltd",
+      "content": "Tawona's work on the TM Pick n Pay platform has been exceptional. His technical expertise and attention to detail resulted in a system that serves over 100,000 customers seamlessly.",
+      "avatar": "/images/testimonials/delbert.jpeg",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "Culverwell Venge",
+      "role": "Lead of Taxcul App",
+      "content": "Tawona was the lead developer of the Taxcul App, he delivered the project flawlessly and is very professional.",
+      "avatar": "/images/testimonials/culverwell.png",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "name": "Jeremy Gapiti",
+      "role": "Project Manager at Contessasoft",
+      "content": "Working with Tawona was a pleasure. He delivered multiple e-commerce platforms on time and exceeded our performance expectations. His full-stack skills are impressive.",
+      "avatar": "/images/testimonials/jeremy.jpg",
+      "rating": 5
+    },
+    {
+      "id": 4,
+      "name": "Mr. Zvakafa",
+      "role": "Faculty of Computer Engineering, University of Zimbabwe",
+      "content": "Tawona was our most consistent undergraduate student. His dedication to software engineering and problem-solving abilities make him stand out among his peers.",
+      "avatar": "/images/testimonials/zvakafa.png",
+      "rating": 5
+    }
+  ],
+  "blog": [
+    {
+      "id": 1,
+      "title": "Building Scalable E-commerce Platforms in Zimbabwe",
+      "excerpt": "Lessons learned from developing the TM Pick n Pay platform that serves over 100,000 customers. Key insights on performance, scalability, and user experience.",
+      "date": "2024-12-15",
+      "readTime": "8 min read",
+      "tags": ["E-commerce", "Laravel", "Next.js", "Scalability"],
+      "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+      "slug": "building-scalable-ecommerce-platforms-zimbabwe"
+    },
+    {
+      "id": 2,
+      "title": "AI and NLP in Healthcare: A Zimbabwean Perspective",
+      "excerpt": "How we're using Natural Language Processing to improve patient referral systems in Zimbabwe's healthcare sector. Technical challenges and solutions.",
+      "date": "2024-11-20",
+      "readTime": "6 min read",
+      "tags": ["AI", "NLP", "Healthcare", "Django", "React Native"],
+      "image": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop",
+      "slug": "ai-nlp-healthcare-zimbabwe"
+    },
+    {
+      "id": 3,
+      "title": "From University to Industry: My Software Engineering Journey",
+      "excerpt": "Reflections on graduating with First Class Honors and transitioning into the software development industry in Zimbabwe. Tips for new graduates.",
+      "date": "2024-10-10",
+      "readTime": "5 min read",
+      "tags": ["Career", "Software Engineering", "University", "Zimbabwe"],
+      "image": "https://images.unsplash.com/photo-1523050854058-8df90110c9d1?w=600&h=400&fit=crop",
+      "slug": "university-to-industry-software-engineering-journey"
+    }
+  ]
+}
