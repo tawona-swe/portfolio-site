@@ -3,8 +3,8 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
 
-const morphTime = 1.5
-const cooldownTime = 0.5
+const morphTime = 2.5
+const cooldownTime = 1.5
 
 interface MorphingTextProps {
   texts: readonly string[]
