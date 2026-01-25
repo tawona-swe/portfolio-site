@@ -109,7 +109,6 @@ const techIconMap: Record<string, string> = {
   'ruby': 'Ruby.svg',
   'ruby on rails': 'Ruby-on-Rails.svg',
   'rails': 'Ruby-on-Rails.svg',
-  'php': 'PHP.svg',
   'perl': 'Perl.svg',
   'lua': 'Lua.svg',
   'r': 'R-.svg',
