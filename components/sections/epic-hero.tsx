@@ -67,16 +67,16 @@ export function EpicHero() {
     <section 
       ref={ref}
       id="home" 
-      className="relative min-h-screen flex items-start justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 pt-24 pb-12"
+      className="relative min-h-screen flex items-start justify-center overflow-hidden bg-gradient-to-br from-gray-950 via-slate-900 to-black pt-24 pb-12"
     >
       {/* Animated Background */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-cyan-600/20"
+        className="absolute inset-0 bg-gradient-to-br from-slate-800/10 via-gray-800/10 to-black/20"
         animate={{
           background: [
-            "linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(147, 51, 234, 0.2) 50%, rgba(6, 182, 212, 0.2) 100%)",
-            "linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(6, 182, 212, 0.2) 50%, rgba(59, 130, 246, 0.2) 100%)",
-            "linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(59, 130, 246, 0.2) 50%, rgba(147, 51, 234, 0.2) 100%)",
+            "linear-gradient(135deg, rgba(30, 41, 59, 0.1) 0%, rgba(17, 24, 39, 0.1) 50%, rgba(0, 0, 0, 0.2) 100%)",
+            "linear-gradient(135deg, rgba(17, 24, 39, 0.1) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(30, 41, 59, 0.1) 100%)",
+            "linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(30, 41, 59, 0.1) 50%, rgba(17, 24, 39, 0.1) 100%)",
           ]
         }}
         transition={{
@@ -91,10 +91,10 @@ export function EpicHero() {
 
       {/* Floating Orbs */}
       <motion.div
-        className="absolute top-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+        className="absolute top-20 left-10 w-96 h-96 bg-slate-700/5 rounded-full blur-3xl"
         animate={{
           scale: [1, 1.2, 1],
-          opacity: [0.3, 0.6, 0.3],
+          opacity: [0.1, 0.2, 0.1],
         }}
         transition={{
           duration: 8,
@@ -103,10 +103,10 @@ export function EpicHero() {
         }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"
+        className="absolute bottom-20 right-10 w-80 h-80 bg-gray-700/5 rounded-full blur-3xl"
         animate={{
           scale: [1.2, 1, 1.2],
-          opacity: [0.6, 0.3, 0.6],
+          opacity: [0.2, 0.1, 0.2],
         }}
         transition={{
           duration: 6,
@@ -128,7 +128,7 @@ export function EpicHero() {
             className="mb-8"
           >
             <motion.span
-              className="inline-flex items-center space-x-2 px-6 py-3 bg-white/10 backdrop-blur-xl rounded-full text-blue-300 border border-white/20"
+              className="inline-flex items-center space-x-2 px-6 py-3 bg-white/5 backdrop-blur-xl rounded-full text-gray-300 border border-white/10"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -207,7 +207,7 @@ export function EpicHero() {
             transition={{ duration: 0.8, delay: 0.9 }}
             className="flex flex-wrap justify-center items-center gap-6 mb-12 max-w-4xl mx-auto"
           >
-            <span className="text-blue-300 text-sm font-semibold mr-4">Tech Stack:</span>
+            <span className="text-gray-400 text-sm font-semibold mr-4">Tech Stack:</span>
             {[
               'React', 'Next.js', 'TypeScript', 'Laravel', 'Python', 
               'Java/Spring Boot', 'Angular', 'MySQL', 'Docker', 'AWS', 'Node.js'
@@ -229,10 +229,10 @@ export function EpicHero() {
                   transition: { duration: 0.2 }
                 }}
               >
-                <div className="w-8 h-8 bg-white/10 backdrop-blur-xl rounded-xl flex items-center justify-center border border-white/20 group-hover:border-blue-400/50 transition-all duration-300">
-                  <TechIcon name={tech} className="w-5 h-5 text-blue-300 group-hover:text-blue-400 transition-colors" />
+                <div className="w-8 h-8 bg-white/5 backdrop-blur-xl rounded-xl flex items-center justify-center border border-white/10 group-hover:border-gray-400/50 transition-all duration-300">
+                  <TechIcon name={tech} className="w-5 h-5 text-gray-400 group-hover:text-gray-300 transition-colors" />
                 </div>
-                <span className="text-gray-300 group-hover:text-white text-sm font-medium transition-colors">
+                <span className="text-gray-400 group-hover:text-white text-sm font-medium transition-colors">
                   {tech}
                 </span>
               </motion.div>
