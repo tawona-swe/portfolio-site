@@ -7,7 +7,7 @@
     "phone": "+263783028721",
     "location": "Harare, Zimbabwe",
     "avatar": "/images/avatar.png",
-    "resume": "/resume.pdf",
+    "resume": "documents/resume.pdf",
     "website": "https://tawona-swe.github.io"
   },
   "socials": [
@@ -20,11 +20,6 @@
       "name": "LinkedIn",
       "url": "https://linkedin.com/in/tawona-rwatida",
       "icon": "linkedin"
-    },
-    {
-      "name": "Portfolio",
-      "url": "https://tawona-swe.github.io",
-      "icon": "globe"
     },
     {
       "name": "Email",
