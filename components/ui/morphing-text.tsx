@@ -1,10 +1,7 @@
 'use client'
 
-import { useCallback, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
-
-const morphTime = 3.5
-const cooldownTime = 2.5
 
 interface MorphingTextProps {
   texts: readonly string[]
@@ -12,104 +9,50 @@ interface MorphingTextProps {
 }
 
 export function MorphingText({ texts, className }: MorphingTextProps) {
-  const textIndexRef = useRef(0)
-  const morphRef = useRef(0)
-  const cooldownRef = useRef(0)
-  const timeRef = useRef(new Date())
-
-  const text1Ref = useRef<HTMLSpanElement>(null)
-  const text2Ref = useRef<HTMLSpanElement>(null)
-
-  const setStyles = useCallback(
-    (fraction: number) => {
-      const [current1, current2] = [text1Ref.current, text2Ref.current]
-
-      if (!current1 || !current2) return
-
-      // Slower, more gradual blur transition
-      current2.style.filter = `blur(${Math.min(12 / fraction - 12, 100)}px)`
-      current2.style.opacity = `${Math.pow(fraction, 0.6) * 100}%`
-
-      const invertedFraction = 1 - fraction
-
-      current1.style.filter = `blur(${Math.min(12 / invertedFraction - 12, 100)}px)`
-      current1.style.opacity = `${Math.pow(invertedFraction, 0.6) * 100}%`
-
-      current1.textContent = texts[textIndexRef.current % texts.length]
-      current2.textContent = texts[(textIndexRef.current + 1) % texts.length]
-    },
-    [texts]
-  )
-
-  const doMorph = useCallback(() => {
-    morphRef.current -= cooldownRef.current
-    cooldownRef.current = 0
-
-    let fraction = morphRef.current / morphTime
-
-    if (fraction > 1) {
-      cooldownRef.current = cooldownTime
-      fraction = 1
-    }
-
-    setStyles(fraction)
-
-    if (fraction === 1) {
-      textIndexRef.current++
-      morphRef.current = 0
-    }
-  }, [setStyles])
-
-  const animate = useCallback(() => {
-    const newTime = new Date()
-    const shouldIncrementIndex = cooldownRef.current > 0
-    const dt = (newTime.getTime() - timeRef.current.getTime()) / 1000
-
-    timeRef.current = newTime
-
-    cooldownRef.current -= dt
-
-    if (cooldownRef.current <= 0) {
-      if (shouldIncrementIndex) {
-        textIndexRef.current++
-      }
-
-      morphRef.current += dt
-    } else {
-      morphRef.current = 0
-    }
-
-    doMorph()
-
-    requestAnimationFrame(animate)
-  }, [doMorph])
+  const [currentTextIndex, setCurrentTextIndex] = useState(0)
+  const [displayedText, setDisplayedText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
 
   useEffect(() => {
-    const animationId = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(animationId)
-  }, [animate])
+    const currentText = texts[currentTextIndex]
+    
+    const timeout = setTimeout(() => {
+      if (isPaused) {
+        // Pause after completing text
+        setIsPaused(false)
+        setIsDeleting(true)
+        return
+      }
+
+      if (isDeleting) {
+        // Delete characters
+        if (displayedText.length > 0) {
+          setDisplayedText(displayedText.slice(0, -1))
+        } else {
+          // Move to next text
+          setIsDeleting(false)
+          setCurrentTextIndex((prev) => (prev + 1) % texts.length)
+        }
+      } else {
+        // Type characters
+        if (displayedText.length < currentText.length) {
+          setDisplayedText(currentText.slice(0, displayedText.length + 1))
+        } else {
+          // Pause when text is complete
+          setIsPaused(true)
+        }
+      }
+    }, isDeleting ? 50 : isPaused ? 2000 : 100) // Faster delete, pause, slower type
+
+    return () => clearTimeout(timeout)
+  }, [displayedText, isDeleting, isPaused, currentTextIndex, texts])
 
   return (
     <div className={cn('relative inline-block', className)}>
-      <span
-        ref={text1Ref}
-        className="absolute inset-0 font-bold"
-        style={{
-          filter: 'blur(0px)',
-          opacity: '100%',
-        }}
-      >
-        {texts[0]}
-      </span>
-      <span
-        ref={text2Ref}
-        className="font-bold"
-        style={{
-          filter: 'blur(100px)',
-          opacity: '0%',
-        }}
-      >
-        {texts[1] || texts[0]}
+      <span className="font-bold">
+        {displayedText}
+        <span className="animate-pulse text-blue-400">|</span>
       </span>
     </div>
   )
