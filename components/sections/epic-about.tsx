@@ -136,7 +136,7 @@ export function EpicAbout() {
                 <img
                   src={personal.avatar}
                   alt={personal.name}
-                  className="w-full h-full object-cover rounded-3xl"
+                  className="w-[100%] h-full object-cover rounded-3xl"
                 />
                 
                 {/* Glowing Border */}
