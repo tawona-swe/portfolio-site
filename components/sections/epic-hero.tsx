@@ -371,14 +371,14 @@ export function EpicHero() {
         className="absolute top-[31%] left-1/2 transform -translate-x-1/2 z-50"
       >
         <motion.div
-          className="w-7 h-11 border-2 border-white/30 rounded-full flex justify-center cursor-pointer"
+          className="w-5 h-8 border-2 border-white/30 rounded-full flex justify-center cursor-pointer"
           whileHover={{ scale: 1.1 }}
           onClick={scrollToAbout}
         >
           <motion.div
-            className="w-1 h-3 bg-gradient-to-b from-blue-400 to-purple-400 rounded-full mt-2"
+            className="w-0.5 h-2 bg-gradient-to-b from-blue-400 to-purple-400 rounded-full mt-1.5"
             animate={{
-              y: [0, 16, 0],
+              y: [0, 12, 0],
               opacity: [1, 0, 1],
             }}
             transition={{
