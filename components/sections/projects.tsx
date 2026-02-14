@@ -1,16 +1,21 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { EyeIcon, CodeBracketIcon } from '@heroicons/react/24/outline'
 import { staggerContainer, staggerItem } from '@/lib/motion'
 import portfolioData from '@/data/portfolio.json'
+import { useState } from 'react'
 
 export function Projects() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
+
+  const [viewAll, setViewAll] = useState(false)
+
+  const displayedProjects = viewAll ? portfolioData.projects : portfolioData.projects.slice(0, 6)
 
   return (
     <section id="projects" className="py-20 bg-foreground/5">
@@ -34,13 +39,18 @@ export function Projects() {
 
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {portfolioData.projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                variants={staggerItem}
-                whileHover={{ y: -5 }}
-                className="group bg-background/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-primary-400/50 transition-all duration-300"
-              >
+            <AnimatePresence mode="popLayout">
+              {displayedProjects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  className="group bg-background/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-primary-400/50 transition-all duration-300"
+                >
                 {/* Project Image */}
                 <div className="relative overflow-hidden">
                   <img
@@ -103,14 +113,22 @@ export function Projects() {
                 </div>
               </motion.div>
             ))}
+            </AnimatePresence>
           </div>
 
           {/* View All Projects Button */}
-          <motion.div variants={staggerItem} className="text-center mt-12">
-            <button className="px-8 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transition-colors cursor-hover">
-              View All Projects
-            </button>
-          </motion.div>
+          {portfolioData.projects.length > 6 && (
+            <div className="text-center mt-12">
+              <button
+                onClick={() => {
+                  console.log('Button clicked, viewAll:', viewAll)
+                  setViewAll(!viewAll)
+                }}
+                className="relative z-10 px-8 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transition-colors cursor-pointer">
+                {viewAll ? 'Show Less Projects' : 'View All Projects'}
+              </button>
+            </div>
+          )}
         </motion.div>
       </div>
     </section>

@@ -8,12 +8,12 @@
     "location": "Harare, Zimbabwe",
     "avatar": "/images/avatar.png",
     "resume": "documents/resume.pdf",
-    "website": "https://tawona-swe.github.io"
+    "website": "#"
   },
   "socials": [
     {
       "name": "GitHub",
-      "url": "https://github.com/tawona-swe",
+      "url": "https://github.com/tawonaqh",
       "icon": "github"
     },
     {
@@ -126,7 +126,7 @@
       "title": "AFINET Customer Portal",
       "description": "Telone, Zol like customer portal where customer can purchase fibre-based operations and data.",
       "image": "/images/projects/afinet.png",
-      "technologies": ["Laravel", "NextJS", "GitHub Actions CI/CD", "Docker", "MySQL"],
+      "technologies": ["Spring/Spring Boot", "NextJS", "GitHub Actions CI/CD", "Docker", "MySQL"],
       "github": "https://github.com/tawonaqh/afinet-customer-portal",
       "demo": "http://afinetportal.duckdns.org/",
       "featured": true

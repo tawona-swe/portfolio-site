@@ -339,10 +339,10 @@ export function EpicExperience() {
           className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8"
         >
           {[
-            { label: "Years Experience", value: "3+", icon: "🚀" },
-            { label: "Projects Completed", value: "15+", icon: "💼" },
+            { label: "Years Experience", value: `${new Date().getFullYear() - 2023}+`, icon: "🚀" },
+            { label: "Projects Completed", value: "5+", icon: "💼" },
             { label: "Happy Clients", value: "100k+", icon: "😊" },
-            { label: "Technologies", value: "20+", icon: "⚡" },
+            { label: "Technologies", value: "15+", icon: "⚡" },
           ].map((stat, index) => (
             <motion.div
               key={stat.label}
