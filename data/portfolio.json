@@ -157,8 +157,8 @@
       "description": "A comprehensive web application for calculating various types of taxes in Zimbabwe. Built with Next.js, React, and modern web technologies.",
       "image": "/images/projects/taxcul.png",
       "technologies": ["Laravel", "NextJS", "Vercel", "MySQL"],
-      "github": "https://github.com/tawona-swe/facebook-marketplace-bot",
-      "demo": "https://github.com/tawona-swe/facebook-marketplace-bot",
+      "github": "https://github.com/tawonaqh/tax-calculator",
+      "demo": "https://www.taxcul.com/",
       "featured": false
     }
   ],
