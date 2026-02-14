@@ -112,16 +112,6 @@
       "featured": true
     },
     {
-      "id": 2,
-      "title": "Gramia School Management System",
-      "description": "Comprehensive school management system with web and mobile applications. Features student management, grade tracking, communication tools, and administrative dashboards.",
-      "image": "/images/projects/gramia.png",
-      "technologies": ["Java", "JavaScript", "Kotlin", "WebFlow", "MySQL"],
-      "github": "https://github.com/tawonaqh/gramia",
-      "demo": "https://gramia.tech",
-      "featured": true
-    },
-    {
       "id": 3,
       "title": "AFINET Customer Portal",
       "description": "Telone, Zol like customer portal where customer can purchase fibre-based operations and data.",
@@ -142,16 +132,6 @@
       "featured": true
     },
     {
-      "id": 5,
-      "title": "Housing Management System",
-      "description": "Complete housing management solution with tenant management, rent tracking, maintenance requests, and financial reporting capabilities.",
-      "image": "/images/projects/housing-management-system.jpeg",
-      "technologies": ["Laravel", "JavaScript", "Blade", "MySQL", "Bootstrap"],
-      "github": "https://github.com/epten08/housing",
-      "demo": "#",
-      "featured": false
-    },
-    {
       "id": 6,
       "title": "Taxcul App",
       "description": "A comprehensive web application for calculating various types of taxes in Zimbabwe. Built with Next.js, React, and modern web technologies.",
@@ -159,6 +139,26 @@
       "technologies": ["Laravel", "NextJS", "Vercel", "MySQL"],
       "github": "https://github.com/tawonaqh/tax-calculator",
       "demo": "https://www.taxcul.com/",
+      "featured": false
+    },
+    {
+      "id": 2,
+      "title": "Gramia School Management System",
+      "description": "Comprehensive school management system with web and mobile applications. Features student management, grade tracking, communication tools, and administrative dashboards.",
+      "image": "/images/projects/gramia.png",
+      "technologies": ["Java", "JavaScript", "Kotlin", "WebFlow", "MySQL"],
+      "github": "https://github.com/tawonaqh/gramia",
+      "demo": "https://gramia.tech",
+      "featured": true
+    },
+    {
+      "id": 5,
+      "title": "Housing Management System",
+      "description": "Complete housing management solution with tenant management, rent tracking, maintenance requests, and financial reporting capabilities.",
+      "image": "/images/projects/housing-management-system.jpeg",
+      "technologies": ["Laravel", "JavaScript", "Blade", "MySQL", "Bootstrap"],
+      "github": "https://github.com/epten08/housing",
+      "demo": "#",
       "featured": false
     }
   ],
