@@ -105,24 +105,123 @@ export function PageLoader() {
     <AnimatePresence>
       {loading && (
         <motion.div
-          className="fixed inset-0 z-[9999] bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 flex items-center justify-center"
+          className="fixed inset-0 z-[9999] bg-gradient-to-br from-gray-950 via-slate-900 to-black flex items-center justify-center overflow-hidden"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
+          {/* Animated background gradient */}
           <motion.div
-            className="text-center"
+            className="absolute inset-0"
+            animate={{
+              background: [
+                "linear-gradient(135deg, #0f172a 0%, #020617 50%, #000000 100%)",
+                "linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #020617 100%)",
+                "linear-gradient(135deg, #0f172a 0%, #020617 50%, #000000 100%)",
+              ]
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+
+          {/* Floating orbs */}
+          <motion.div
+            className="absolute top-20 left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.3, 0.5, 0.3],
+              x: [0, 50, 0],
+              y: [0, 30, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 right-20 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl"
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.4, 0.2, 0.4],
+              x: [0, -40, 0],
+              y: [0, -20, 0],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+
+          {/* Particles */}
+          <div className="absolute inset-0">
+            {Array.from({ length: 30 }).map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 bg-blue-400 rounded-full"
+                initial={{
+                  x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : Math.random() * 1920,
+                  y: typeof window !== 'undefined' ? Math.random() * window.innerHeight : Math.random() * 1080,
+                  opacity: 0,
+                }}
+                animate={{
+                  x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : Math.random() * 1920,
+                  y: typeof window !== 'undefined' ? Math.random() * window.innerHeight : Math.random() * 1080,
+                  opacity: [0, 1, 0],
+                }}
+                transition={{
+                  duration: Math.random() * 5 + 3,
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: Math.random() * 2,
+                }}
+              />
+            ))}
+          </div>
+
+          <motion.div
+            className="text-center relative z-10"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <motion.div
-              className="w-20 h-20 border-4 border-blue-400 border-t-transparent rounded-full mx-auto mb-8"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            />
+            {/* Animated spinner with glow */}
+            <motion.div className="relative w-24 h-24 mx-auto mb-8">
+              <motion.div
+                className="absolute inset-0 border-4 border-blue-500/30 rounded-full"
+              />
+              <motion.div
+                className="absolute inset-0 border-4 border-transparent border-t-blue-400 rounded-full"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              />
+              <motion.div
+                className="absolute inset-2 border-4 border-transparent border-t-purple-400 rounded-full"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+              />
+              {/* Glow effect */}
+              <motion.div
+                className="absolute inset-0 bg-blue-500/20 rounded-full blur-xl"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.6, 0.3],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+            </motion.div>
+
+            {/* Name with animated gradient */}
             <motion.h2
-              className="text-3xl font-bold text-white mb-4"
+              className="text-4xl sm:text-5xl font-bold mb-4"
               animate={{
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
               }}
@@ -132,22 +231,50 @@ export function PageLoader() {
                 ease: "linear"
               }}
               style={{
-                background: "linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4, #3b82f6)",
+                background: "linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4, #3b82f6)",
                 backgroundSize: "300% 300%",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
               }}
             >
               Tawona Rwatida
             </motion.h2>
+
+            {/* Subtitle with typing effect */}
             <motion.p
-              className="text-blue-300 text-lg"
+              className="text-blue-300 text-lg sm:text-xl font-medium"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               Crafting Digital Experiences
             </motion.p>
+
+            {/* Loading dots */}
+            <motion.div
+              className="flex justify-center space-x-2 mt-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+            >
+              {[0, 1, 2].map((i) => (
+                <motion.div
+                  key={i}
+                  className="w-2 h-2 bg-blue-400 rounded-full"
+                  animate={{
+                    scale: [1, 1.5, 1],
+                    opacity: [0.5, 1, 0.5],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    delay: i * 0.2,
+                    ease: "easeInOut"
+                  }}
+                />
+              ))}
+            </motion.div>
           </motion.div>
         </motion.div>
       )}
