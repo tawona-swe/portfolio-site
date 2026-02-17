@@ -110,31 +110,12 @@ export function PageLoader() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
-          {/* Animated background gradient */}
-          <motion.div
-            className="absolute inset-0"
-            animate={{
-              background: [
-                "linear-gradient(135deg, #0f172a 0%, #020617 50%, #000000 100%)",
-                "linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #020617 100%)",
-                "linear-gradient(135deg, #0f172a 0%, #020617 50%, #000000 100%)",
-              ]
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-
-          {/* Floating orbs */}
+          {/* Floating orbs - reduced complexity */}
           <motion.div
             className="absolute top-20 left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"
             animate={{
-              scale: [1, 1.3, 1],
+              scale: [1, 1.2, 1],
               opacity: [0.3, 0.5, 0.3],
-              x: [0, 50, 0],
-              y: [0, 30, 0],
             }}
             transition={{
               duration: 8,
@@ -147,8 +128,6 @@ export function PageLoader() {
             animate={{
               scale: [1.2, 1, 1.2],
               opacity: [0.4, 0.2, 0.4],
-              x: [0, -40, 0],
-              y: [0, -20, 0],
             }}
             transition={{
               duration: 6,
@@ -157,27 +136,24 @@ export function PageLoader() {
             }}
           />
 
-          {/* Particles */}
+          {/* Reduced particles - only 10 for performance */}
           <div className="absolute inset-0">
-            {Array.from({ length: 30 }).map((_, i) => (
+            {Array.from({ length: 10 }).map((_, i) => (
               <motion.div
                 key={i}
                 className="absolute w-1 h-1 bg-blue-400 rounded-full"
-                initial={{
-                  x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : Math.random() * 1920,
-                  y: typeof window !== 'undefined' ? Math.random() * window.innerHeight : Math.random() * 1080,
-                  opacity: 0,
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
                 }}
                 animate={{
-                  x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : Math.random() * 1920,
-                  y: typeof window !== 'undefined' ? Math.random() * window.innerHeight : Math.random() * 1080,
                   opacity: [0, 1, 0],
                 }}
                 transition={{
-                  duration: Math.random() * 5 + 3,
+                  duration: 3,
                   repeat: Infinity,
                   ease: "linear",
-                  delay: Math.random() * 2,
+                  delay: i * 0.3,
                 }}
               />
             ))}
@@ -189,20 +165,12 @@ export function PageLoader() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* Animated spinner with glow */}
+            {/* Simplified spinner with glow */}
             <motion.div className="relative w-24 h-24 mx-auto mb-8">
               <motion.div
-                className="absolute inset-0 border-4 border-blue-500/30 rounded-full"
-              />
-              <motion.div
-                className="absolute inset-0 border-4 border-transparent border-t-blue-400 rounded-full"
+                className="absolute inset-0 border-4 border-transparent border-t-blue-400 border-r-purple-400 rounded-full"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.div
-                className="absolute inset-2 border-4 border-transparent border-t-purple-400 rounded-full"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
               />
               {/* Glow effect */}
               <motion.div
@@ -241,7 +209,7 @@ export function PageLoader() {
               Tawona Rwatida
             </motion.h2>
 
-            {/* Subtitle with typing effect */}
+            {/* Subtitle */}
             <motion.p
               className="text-blue-300 text-lg sm:text-xl font-medium"
               initial={{ opacity: 0, y: 20 }}
