@@ -116,7 +116,7 @@
       "title": "AFINET Customer Portal",
       "description": "Telone, Zol like customer portal where customer can purchase fibre-based operations and data.",
       "image": "/images/projects/afinet.png",
-      "technologies": ["Spring/Spring Boot", "NextJS", "GitHub Actions CI/CD", "Docker", "MySQL"],
+      "technologies": ["Laravel", "Vue.js", "GitHub Actions CI/CD", "Docker", "MySQL"],
       "github": "https://github.com/tawonaqh/afinet-customer-portal",
       "demo": "http://afinetportal.duckdns.org/",
       "featured": true
@@ -146,7 +146,7 @@
       "title": "Gramia School Management System",
       "description": "Comprehensive school management system with web and mobile applications. Features student management, grade tracking, communication tools, and administrative dashboards.",
       "image": "/images/projects/gramia.png",
-      "technologies": ["Java", "JavaScript", "Kotlin", "WebFlow", "MySQL"],
+      "technologies": ["PHP", "JavaScript", "Kotlin", "WebFlow", "MySQL"],
       "github": "https://github.com/tawonaqh/gramia",
       "demo": "https://gramia.tech",
       "featured": true
