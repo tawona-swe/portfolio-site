@@ -146,7 +146,7 @@
       "title": "Gramia School Management System",
       "description": "Comprehensive school management system with web and mobile applications. Features student management, grade tracking, communication tools, and administrative dashboards.",
       "image": "/images/projects/gramia.png",
-      "technologies": ["Java", "JavaScript", "Kotlin", "WebFlow", "MySQL"],
+      "technologies": ["PHP", "JavaScript", "Kotlin", "WebFlow", "MySQL"],
       "github": "https://github.com/tawonaqh/gramia",
       "demo": "https://gramia.tech",
       "featured": true
