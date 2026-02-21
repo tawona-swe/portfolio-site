@@ -15,27 +15,416 @@ const roles = [
   'Digital Innovation Creator'
 ]
 
-// Water droplet splash animation variants
-const dropletVariants = {
+// Explosive bomb entrance animation variants
+const explosionVariants = {
   hidden: { 
     scale: 0, 
     opacity: 0,
-    y: -100,
-    rotate: -180
-  },
-  visible: (i: number) => ({
-    scale: 1,
-    opacity: 1,
+    x: 0,
     y: 0,
-    rotate: 0,
-    transition: {
-      type: "spring",
-      damping: 12,
-      stiffness: 100,
-      delay: i * 0.1,
-      duration: 0.8
+  },
+  visible: (i: number) => {
+    // Calculate random explosion direction
+    const angle = (Math.random() * 360) * (Math.PI / 180)
+    const distance = 200 + Math.random() * 100
+    const startX = Math.cos(angle) * distance
+    const startY = Math.sin(angle) * distance
+    
+    return {
+      scale: [0, 1.3, 1],
+      opacity: [0, 1, 1],
+      x: [startX, 0],
+      y: [startY, 0],
+      rotate: [Math.random() * 360, 0],
+      transition: {
+        type: "spring",
+        damping: 15,
+        stiffness: 150,
+        delay: i * 0.08,
+        duration: 0.8
+      }
     }
-  })
+  }
+}
+
+// Interactive Tic-Tac-Toe Game
+const TicTacToeGame = () => {
+  const [board, setBoard] = useState<(string | null)[]>(Array(9).fill(null))
+  const [isPlayerTurn, setIsPlayerTurn] = useState(true)
+  const [winner, setWinner] = useState<string | null>(null)
+  const [winningLine, setWinningLine] = useState<number[] | null>(null)
+  const [gameStarted, setGameStarted] = useState(false)
+
+  const winPatterns = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
+    [0, 4, 8], [2, 4, 6] // diagonals
+  ]
+
+  const checkWinner = (currentBoard: (string | null)[]) => {
+    for (const pattern of winPatterns) {
+      const [a, b, c] = pattern
+      if (currentBoard[a] && currentBoard[a] === currentBoard[b] && currentBoard[a] === currentBoard[c]) {
+        return { winner: currentBoard[a], line: pattern }
+      }
+    }
+    if (currentBoard.every(cell => cell !== null)) {
+      return { winner: 'draw', line: null }
+    }
+    return null
+  }
+
+  const makeAIMove = (currentBoard: (string | null)[]) => {
+    const emptyCells = currentBoard.map((cell, idx) => cell === null ? idx : null).filter(idx => idx !== null) as number[]
+    if (emptyCells.length === 0) return null
+
+    // Check if AI can win
+    for (const cell of emptyCells) {
+      const testBoard = [...currentBoard]
+      testBoard[cell] = 'O'
+      if (checkWinner(testBoard)?.winner === 'O') {
+        return cell
+      }
+    }
+
+    // Block player from winning
+    for (const cell of emptyCells) {
+      const testBoard = [...currentBoard]
+      testBoard[cell] = 'X'
+      if (checkWinner(testBoard)?.winner === 'X') {
+        return cell
+      }
+    }
+
+    // Take center if available
+    if (currentBoard[4] === null) {
+      return 4
+    }
+
+    // Take corners
+    const corners = [0, 2, 6, 8].filter(i => currentBoard[i] === null)
+    if (corners.length > 0) {
+      return corners[Math.floor(Math.random() * corners.length)]
+    }
+
+    // Take any remaining cell
+    return emptyCells[Math.floor(Math.random() * emptyCells.length)]
+  }
+
+  const handleCellClick = (index: number) => {
+    if (!gameStarted) setGameStarted(true)
+    if (board[index] || winner || !isPlayerTurn) return
+
+    const newBoard = [...board]
+    newBoard[index] = 'X'
+    setBoard(newBoard)
+
+    const result = checkWinner(newBoard)
+    if (result) {
+      setWinner(result.winner)
+      setWinningLine(result.line)
+      return
+    }
+
+    setIsPlayerTurn(false)
+
+    // AI move after delay
+    setTimeout(() => {
+      const aiMove = makeAIMove(newBoard)
+      if (aiMove !== null) {
+        const aiBoard = [...newBoard]
+        aiBoard[aiMove] = 'O'
+        setBoard(aiBoard)
+
+        const aiResult = checkWinner(aiBoard)
+        if (aiResult) {
+          setWinner(aiResult.winner)
+          setWinningLine(aiResult.line)
+        }
+      }
+      setIsPlayerTurn(true)
+    }, 500)
+  }
+
+  const resetGame = () => {
+    setBoard(Array(9).fill(null))
+    setIsPlayerTurn(true)
+    setWinner(null)
+    setWinningLine(null)
+    setGameStarted(false)
+  }
+
+  const draw = {
+    hidden: { pathLength: 0, opacity: 0 },
+    visible: {
+      pathLength: 1,
+      opacity: 1,
+      transition: {
+        pathLength: { type: "spring", duration: 0.8, bounce: 0 },
+        opacity: { duration: 0.01 },
+      },
+    },
+  }
+
+  return (
+    <div className="relative w-full h-full flex flex-col items-center justify-center gap-6">
+      {/* Title */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center"
+      >
+        <h3 className="text-xl font-bold text-white mb-1">
+          Challenge Me!
+        </h3>
+        <p className="text-gray-400 text-xs">
+          {!gameStarted ? 'Click any cell to start' : winner ? (
+            winner === 'draw' ? "It's a draw!" : winner === 'X' ? 'You won! 🎉' : 'I won! Try again?'
+          ) : isPlayerTurn ? 'Your turn (X)' : 'My turn (O)...'}
+        </p>
+      </motion.div>
+
+      {/* Game Board */}
+      <div className="relative">
+        {/* Grid Lines */}
+        <svg
+          width="240"
+          height="240"
+          viewBox="0 0 240 240"
+          className="absolute inset-0"
+        >
+          {/* Vertical lines */}
+          <motion.line
+            x1="80"
+            y1="10"
+            x2="80"
+            y2="230"
+            stroke="#3b82f6"
+            strokeWidth="3"
+            strokeLinecap="round"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          />
+          <motion.line
+            x1="160"
+            y1="10"
+            x2="160"
+            y2="230"
+            stroke="#3b82f6"
+            strokeWidth="3"
+            strokeLinecap="round"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          />
+          {/* Horizontal lines */}
+          <motion.line
+            x1="10"
+            y1="80"
+            x2="230"
+            y2="80"
+            stroke="#3b82f6"
+            strokeWidth="3"
+            strokeLinecap="round"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          />
+          <motion.line
+            x1="10"
+            y1="160"
+            x2="230"
+            y2="160"
+            stroke="#3b82f6"
+            strokeWidth="3"
+            strokeLinecap="round"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          />
+
+          {/* Winning Line */}
+          {winner && winningLine && (
+            <motion.line
+              x1={winningLine[0] % 3 === 0 ? 40 : winningLine[0] % 3 === 1 ? 120 : 200}
+              y1={Math.floor(winningLine[0] / 3) === 0 ? 40 : Math.floor(winningLine[0] / 3) === 1 ? 120 : 200}
+              x2={winningLine[2] % 3 === 0 ? 40 : winningLine[2] % 3 === 1 ? 120 : 200}
+              y2={Math.floor(winningLine[2] / 3) === 0 ? 40 : Math.floor(winningLine[2] / 3) === 1 ? 120 : 200}
+              stroke="#10b981"
+              strokeWidth="5"
+              strokeLinecap="round"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            />
+          )}
+        </svg>
+
+        {/* Cells */}
+        <div className="grid grid-cols-3 gap-0 w-[240px] h-[240px]">
+          {board.map((cell, index) => {
+            return (
+              <motion.button
+                key={index}
+                onClick={() => handleCellClick(index)}
+                className="relative w-[80px] h-[80px] flex items-center justify-center cursor-pointer transition-all disabled:cursor-not-allowed group"
+                disabled={!!cell || !!winner || !isPlayerTurn}
+                whileHover={{ scale: cell ? 1 : 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {/* Hover effect background */}
+                {!cell && !winner && isPlayerTurn && (
+                  <motion.div
+                    className="absolute inset-2 rounded-xl bg-gradient-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/20 group-hover:to-purple-500/20 transition-all duration-300"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                  />
+                )}
+
+                {/* Cell glow when filled */}
+                {cell && (
+                  <motion.div
+                    className={`absolute inset-0 rounded-xl blur-xl ${
+                      cell === 'X' ? 'bg-purple-500/20' : 'bg-cyan-500/20'
+                    }`}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                )}
+
+                {cell && (
+                  <svg
+                    width="60"
+                    height="60"
+                    viewBox="0 0 60 60"
+                    className="absolute z-10"
+                  >
+                    {cell === 'X' ? (
+                      <>
+                        {/* X with glow effect */}
+                        <defs>
+                          <filter id={`glow-x-${index}`}>
+                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                            <feMerge>
+                              <feMergeNode in="coloredBlur"/>
+                              <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                          </filter>
+                        </defs>
+                        <motion.line
+                          x1="12"
+                          y1="12"
+                          x2="48"
+                          y2="48"
+                          stroke="url(#gradient-x)"
+                          strokeWidth="6"
+                          strokeLinecap="round"
+                          filter={`url(#glow-x-${index})`}
+                          variants={draw}
+                          initial="hidden"
+                          animate="visible"
+                        />
+                        <motion.line
+                          x1="48"
+                          y1="12"
+                          x2="12"
+                          y2="48"
+                          stroke="url(#gradient-x)"
+                          strokeWidth="6"
+                          strokeLinecap="round"
+                          filter={`url(#glow-x-${index})`}
+                          variants={draw}
+                          initial="hidden"
+                          animate="visible"
+                        />
+                        <defs>
+                          <linearGradient id="gradient-x" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#a855f7" />
+                            <stop offset="100%" stopColor="#ec4899" />
+                          </linearGradient>
+                        </defs>
+                      </>
+                    ) : (
+                      <>
+                        {/* O with glow effect */}
+                        <defs>
+                          <filter id={`glow-o-${index}`}>
+                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                            <feMerge>
+                              <feMergeNode in="coloredBlur"/>
+                              <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                          </filter>
+                          <linearGradient id="gradient-o" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#06b6d4" />
+                            <stop offset="100%" stopColor="#3b82f6" />
+                          </linearGradient>
+                        </defs>
+                        <motion.circle
+                          cx="30"
+                          cy="30"
+                          r="20"
+                          stroke="url(#gradient-o)"
+                          strokeWidth="6"
+                          fill="transparent"
+                          strokeLinecap="round"
+                          filter={`url(#glow-o-${index})`}
+                          variants={draw}
+                          initial="hidden"
+                          animate="visible"
+                        />
+                      </>
+                    )}
+                  </svg>
+                )}
+
+                {/* Subtle border on cells */}
+                <div className="absolute inset-0 border border-white/5 pointer-events-none" />
+              </motion.button>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Reset Button */}
+      {(winner || gameStarted) && (
+        <motion.button
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          onClick={resetGame}
+          className="px-5 py-2.5 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold text-sm hover:from-blue-600 hover:to-purple-600 transition-all shadow-lg shadow-blue-500/25"
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {winner ? 'Play Again' : 'Reset Game'}
+        </motion.button>
+      )}
+
+      {/* Floating particles */}
+      {Array.from({ length: 8 }).map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-1.5 h-1.5 bg-blue-400/30 rounded-full"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+          }}
+          animate={{
+            y: [0, -20, 0],
+            opacity: [0.2, 0.6, 0.2],
+            scale: [1, 1.5, 1],
+          }}
+          transition={{
+            duration: 3 + Math.random() * 2,
+            repeat: Infinity,
+            delay: Math.random() * 2,
+          }}
+        />
+      ))}
+    </div>
+  )
 }
 
 const ParticleField = () => {
@@ -83,7 +472,7 @@ export function EpicHero() {
   }, [])
 
   useEffect(() => {
-    // Show intro GIF for 5 seconds (to see the full click animation), then fade out and show content
+    // Show intro GIF for 5 seconds, then fade out and show content
     const introTimer = setTimeout(() => {
       setShowIntro(false)
       setTimeout(() => {
@@ -267,6 +656,62 @@ export function EpicHero() {
       {/* Main Hero Content - Only show after intro */}
       {showContent && (
         <>
+          {/* Explosion Center Effect */}
+          <motion.div
+            initial={{ scale: 0, opacity: 1 }}
+            animate={{ scale: 3, opacity: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none"
+          >
+            <div className="w-32 h-32 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 blur-3xl" />
+          </motion.div>
+
+          {/* Shockwave rings */}
+          {[0, 1, 2].map((i) => (
+            <motion.div
+              key={i}
+              initial={{ scale: 0, opacity: 0.8 }}
+              animate={{ scale: 4, opacity: 0 }}
+              transition={{ 
+                duration: 1.5, 
+                delay: i * 0.15,
+                ease: "easeOut" 
+              }}
+              className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
+            >
+              <div className="w-32 h-32 rounded-full border-4 border-blue-400/50" />
+            </motion.div>
+          ))}
+
+          {/* Particle burst effect */}
+          {Array.from({ length: 30 }).map((_, i) => {
+            const angle = (i / 30) * Math.PI * 2
+            const distance = 300
+            return (
+              <motion.div
+                key={i}
+                initial={{ 
+                  x: 0, 
+                  y: 0, 
+                  scale: 1,
+                  opacity: 1 
+                }}
+                animate={{ 
+                  x: Math.cos(angle) * distance,
+                  y: Math.sin(angle) * distance,
+                  scale: 0,
+                  opacity: 0
+                }}
+                transition={{ 
+                  duration: 1,
+                  delay: i * 0.02,
+                  ease: "easeOut" 
+                }}
+                className="absolute top-1/2 left-1/2 w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full z-25 pointer-events-none"
+              />
+            )
+          })}
+
           {/* Animated Background */}
           <motion.div
             className="absolute inset-0 bg-gradient-to-br from-slate-800/10 via-gray-800/10 to-black/20"
@@ -284,41 +729,41 @@ export function EpicHero() {
             }}
           />
 
-      {/* Particle Field */}
-      <ParticleField />
+          {/* Particle Field */}
+          <ParticleField />
 
-      {/* Floating Orbs */}
-      <motion.div
-        className="absolute top-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div
-        className="absolute bottom-20 right-10 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.3, 0.2, 0.3],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
+          {/* Floating Orbs */}
+          <motion.div
+            className="absolute top-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 right-10 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.3, 0.2, 0.3],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-40">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-5rem)]">
           
           {/* LEFT SIDE - Content */}
           <motion.div
-            variants={dropletVariants}
+            variants={explosionVariants}
             initial="hidden"
             animate="visible"
             custom={0}
@@ -326,7 +771,7 @@ export function EpicHero() {
           >
             {/* Welcome Badge */}
             <motion.div
-              variants={dropletVariants}
+              variants={explosionVariants}
               initial="hidden"
               animate="visible"
               custom={1}
@@ -343,13 +788,13 @@ export function EpicHero() {
 
             {/* Main Heading */}
             <motion.div
-              variants={dropletVariants}
+              variants={explosionVariants}
               initial="hidden"
               animate="visible"
               custom={2}
             >
               <motion.h1
-                variants={dropletVariants}
+                variants={explosionVariants}
                 initial="hidden"
                 animate="visible"
                 custom={3}
@@ -376,7 +821,7 @@ export function EpicHero() {
 
               {/* Morphing Role */}
               <motion.div
-                variants={dropletVariants}
+                variants={explosionVariants}
                 initial="hidden"
                 animate="visible"
                 custom={4}
@@ -388,7 +833,7 @@ export function EpicHero() {
 
             {/* Subtitle */}
             <motion.p
-              variants={dropletVariants}
+              variants={explosionVariants}
               initial="hidden"
               animate="visible"
               custom={5}
@@ -399,7 +844,7 @@ export function EpicHero() {
 
             {/* Action Buttons */}
             <motion.div
-              variants={dropletVariants}
+              variants={explosionVariants}
               initial="hidden"
               animate="visible"
               custom={6}
@@ -445,7 +890,7 @@ export function EpicHero() {
 
             {/* Social Links */}
             <motion.div
-              variants={dropletVariants}
+              variants={explosionVariants}
               initial="hidden"
               animate="visible"
               custom={7}
@@ -491,66 +936,15 @@ export function EpicHero() {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT SIDE - Coder Giphy */}
+          {/* RIGHT SIDE - Interactive Tic-Tac-Toe Game */}
           <motion.div
-            variants={dropletVariants}
+            variants={explosionVariants}
             initial="hidden"
             animate="visible"
             custom={8}
-            className="relative flex items-center justify-center"
+            className="relative flex items-center justify-center h-[600px]"
           >
-            {/* Glowing effect behind image */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-3xl blur-3xl"
-              animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.3, 0.5, 0.3],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-
-            {/* Main Image Container */}
-            <motion.div
-              className="relative z-10"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <img
-                src="/images/coder-giphy.gif"
-                alt="Coding Animation"
-                className="w-full h-auto max-w-lg mx-auto"
-              />
-            </motion.div>
-
-            {/* Floating elements around the image */}
-            <motion.div
-              className="absolute -top-6 -right-6 w-24 h-24 bg-blue-500/20 rounded-full blur-2xl"
-              animate={{
-                y: [0, -20, 0],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-            <motion.div
-              className="absolute -bottom-6 -left-6 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl"
-              animate={{
-                y: [0, 20, 0],
-                scale: [1, 1.3, 1],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
+            <TicTacToeGame />
           </motion.div>
         </div>
 
@@ -607,25 +1001,25 @@ export function EpicHero() {
           transition={{ delay: 1.5, duration: 1 }}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-50"
         >
-        <motion.div
-          className="w-6 h-10 border-2 border-blue-400/50 rounded-full flex justify-center cursor-pointer hover:border-blue-400 transition-colors"
-          whileHover={{ scale: 1.1 }}
-          onClick={scrollToAbout}
-        >
           <motion.div
-            className="w-1 h-3 bg-gradient-to-b from-blue-400 to-purple-400 rounded-full mt-2"
-            animate={{
-              y: [0, 16, 0],
-              opacity: [1, 0, 1],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
+            className="w-6 h-10 border-2 border-blue-400/50 rounded-full flex justify-center cursor-pointer hover:border-blue-400 transition-colors"
+            whileHover={{ scale: 1.1 }}
+            onClick={scrollToAbout}
+          >
+            <motion.div
+              className="w-1 h-3 bg-gradient-to-b from-blue-400 to-purple-400 rounded-full mt-2"
+              animate={{
+                y: [0, 16, 0],
+                opacity: [1, 0, 1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </motion.div>
         </motion.div>
-      </motion.div>
       )}
     </section>
   )

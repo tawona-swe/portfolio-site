@@ -1,10 +1,8 @@
 import { SimpleStars } from '@/components/backgrounds/simple-stars'
 import { EpicHeader } from '@/components/layout/epic-header'
 import { EpicHero } from '@/components/sections/epic-hero'
-import { EpicAbout } from '@/components/sections/epic-about'
-import { EpicSkills } from '@/components/sections/epic-skills'
-import { EpicExperience } from '@/components/sections/epic-experience'
-import { Projects } from '@/components/sections/projects'
+import { AboutSkillsCombined } from '@/components/sections/about-skills-combined'
+import { ExperienceProjectsTabs } from '@/components/sections/experience-projects-tabs'
 import { Testimonials } from '@/components/sections/testimonials'
 import { Contact } from '@/components/sections/contact'
 import { Footer } from '@/components/layout/footer'
@@ -24,26 +22,18 @@ export default function Home() {
         <EpicHero />
         
         <SectionTransition delay={0.2}>
-          <EpicAbout />
+          <AboutSkillsCombined />
         </SectionTransition>
         
         <SectionTransition delay={0.4}>
-          <EpicSkills />
+          <ExperienceProjectsTabs />
         </SectionTransition>
         
         <SectionTransition delay={0.6}>
-          <EpicExperience />
-        </SectionTransition>
-        
-        <SectionTransition delay={0.8}>
-          <Projects />
-        </SectionTransition>
-        
-        <SectionTransition delay={1.0}>
           <Testimonials />
         </SectionTransition>
         
-        <SectionTransition delay={1.2}>
+        <SectionTransition delay={0.8}>
           <Contact />
         </SectionTransition>
       </div>

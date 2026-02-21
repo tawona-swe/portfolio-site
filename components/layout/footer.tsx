@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { HeartIcon, ArrowUpIcon } from '@heroicons/react/24/solid'
+import { HeartIcon, ArrowUpIcon, SparklesIcon } from '@heroicons/react/24/solid'
+import { EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline'
 import portfolioData from '@/data/portfolio.json'
 
 export function Footer() {
@@ -13,27 +14,38 @@ export function Footer() {
   }
 
   return (
-    <footer className="relative bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/20 border-t border-white/10">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+    <footer className="relative bg-gradient-to-br from-gray-950 via-slate-900 to-black border-t border-white/10 overflow-hidden">
+      {/* Animated Background Effects */}
+      <motion.div 
+        className="absolute inset-0 bg-gradient-to-t from-blue-500/5 via-purple-500/5 to-transparent"
+        animate={{
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
       
       {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 15 }).map((_, i) => (
+        {Array.from({ length: 30 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
+            className="absolute w-1 h-1 bg-blue-400/40 rounded-full"
             initial={{
               x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1920),
-              y: Math.random() * 200,
+              y: 200,
               opacity: 0,
             }}
             animate={{
-              y: [0, -100, 0],
+              y: [200, -100],
               opacity: [0, 1, 0],
+              scale: [0, 1.5, 0],
             }}
             transition={{
-              duration: Math.random() * 8 + 4,
+              duration: Math.random() * 8 + 6,
               repeat: Infinity,
               ease: "easeInOut",
               delay: Math.random() * 5,
@@ -42,127 +54,285 @@ export function Footer() {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
-        {/* Main Footer Content */}
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-12 mb-12">
-          
-          {/* Brand Section */}
+      {/* Animated Grid Background */}
+      <div className="absolute inset-0 opacity-5"
+           style={{
+             backgroundImage: 'linear-gradient(rgba(59, 130, 246, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.5) 1px, transparent 1px)',
+             backgroundSize: '50px 50px'
+           }}
+      />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+        
+        {/* Top Section with Avatar */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col items-center text-center mb-16"
+        >
+          {/* Avatar with Glow Effect */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-2"
+            className="relative mb-8"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
           >
-            <motion.h3 
-              className="text-4xl font-bold mb-4"
-              style={{
-                background: "linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundSize: "200% 200%",
-              }}
+            {/* Outer glow rings */}
+            <motion.div
+              className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 blur-2xl opacity-50"
               animate={{
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.6, 0.3],
               }}
               transition={{
-                duration: 5,
+                duration: 3,
                 repeat: Infinity,
-                ease: "linear"
+                ease: "easeInOut"
               }}
-            >
-              {personal.name}
-            </motion.h3>
-            <p className="text-xl text-blue-300 mb-6 font-medium">
-              {personal.title}
-            </p>
-            <p className="text-gray-300 text-lg leading-relaxed max-w-md">
-              Crafting digital experiences that push boundaries and deliver exceptional results. 
-              Let's build something amazing together.
-            </p>
+            />
             
-            {/* CTA Button */}
-            <motion.button
-              onClick={() => {
-                const element = document.getElementById('contact')
-                if (element) element.scrollIntoView({ behavior: 'smooth' })
-              }}
-              className="mt-8 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-2xl font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 cursor-hover"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Let's Work Together
-            </motion.button>
+            {/* Avatar container */}
+            <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 shadow-2xl shadow-blue-500/50">
+              <img
+                src="/images/avatar.png"
+                alt={personal.name}
+                className="w-full h-full object-cover"
+              />
+              
+              {/* Overlay gradient on hover */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-t from-blue-500/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"
+              />
+            </div>
+
+            {/* Orbiting sparkles */}
+            {[0, 120, 240].map((angle, i) => (
+              <motion.div
+                key={i}
+                className="absolute top-1/2 left-1/2"
+                style={{
+                  width: '8px',
+                  height: '8px',
+                }}
+                animate={{
+                  rotate: 360,
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: i * 0.3,
+                }}
+              >
+                <motion.div
+                  className="w-2 h-2 bg-blue-400 rounded-full"
+                  style={{
+                    position: 'absolute',
+                    left: '70px',
+                    top: '-4px',
+                  }}
+                  animate={{
+                    scale: [1, 1.5, 1],
+                    opacity: [0.5, 1, 0.5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              </motion.div>
+            ))}
           </motion.div>
 
+          {/* Name with Gradient Animation */}
+          <motion.h3 
+            className="text-5xl font-bold mb-4"
+            style={{
+              background: "linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundSize: "200% 200%",
+            }}
+            animate={{
+              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          >
+            {personal.name}
+          </motion.h3>
+          
+          <p className="text-2xl text-blue-300 mb-6 font-semibold">
+            {personal.title}
+          </p>
+          
+          <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mb-8">
+            Crafting digital experiences that push boundaries and deliver exceptional results. 
+            Let's build something amazing together.
+          </p>
+
+          {/* CTA Button */}
+          <motion.button
+            onClick={() => {
+              const element = document.getElementById('contact')
+              if (element) element.scrollIntoView({ behavior: 'smooth' })
+            }}
+            className="relative px-10 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 text-white rounded-2xl font-bold text-lg overflow-hidden shadow-2xl shadow-blue-500/30 group"
+            whileHover={{ scale: 1.05, y: -3 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600"
+              initial={{ x: "-100%" }}
+              whileHover={{ x: "0%" }}
+              transition={{ duration: 0.3 }}
+            />
+            <span className="relative flex items-center gap-2">
+              <SparklesIcon className="w-5 h-5" />
+              Let's Work Together
+            </span>
+          </motion.button>
+        </motion.div>
+
+        {/* Main Footer Content */}
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-12 mb-12">
+          
           {/* Quick Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="text-xl font-bold text-white mb-6">Navigate</h4>
+            <h4 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+              <motion.div
+                className="w-1 h-8 bg-gradient-to-b from-blue-400 to-purple-400 rounded-full"
+                animate={{ scaleY: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              Navigate
+            </h4>
             <ul className="space-y-4">
               {[
+                { name: 'Home', href: '#home' },
                 { name: 'About', href: '#about' },
-                { name: 'Skills', href: '#skills' },
-                { name: 'Experience', href: '#experience' },
-                { name: 'Projects', href: '#projects' },
+                { name: 'Work', href: '#work' },
+                { name: 'Testimonials', href: '#testimonials' },
                 { name: 'Contact', href: '#contact' },
-              ].map((link) => (
-                <li key={link.name}>
+              ].map((link, index) => (
+                <motion.li
+                  key={link.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                >
                   <motion.a
                     href={link.href}
-                    className="text-gray-300 hover:text-blue-400 transition-colors text-lg cursor-hover group flex items-center"
-                    whileHover={{ x: 5 }}
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-lg cursor-pointer group flex items-center"
+                    whileHover={{ x: 8 }}
                   >
-                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <motion.span 
+                      className="w-2 h-2 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"
+                      whileHover={{ scale: 1.5 }}
+                    />
                     {link.name}
                   </motion.a>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </motion.div>
 
-          {/* Contact & Social */}
+          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h4 className="text-xl font-bold text-white mb-6">Connect</h4>
+            <h4 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+              <motion.div
+                className="w-1 h-8 bg-gradient-to-b from-purple-400 to-cyan-400 rounded-full"
+                animate={{ scaleY: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+              />
+              Get in Touch
+            </h4>
             
-            {/* Contact Info */}
-            <div className="space-y-4 mb-8">
+            <div className="space-y-6">
               <motion.a
                 href={`mailto:${personal.email}`}
-                className="block text-gray-300 hover:text-blue-400 transition-colors text-lg cursor-hover"
+                className="flex items-center gap-3 text-gray-300 hover:text-blue-400 transition-colors group"
                 whileHover={{ x: 5 }}
               >
-                {personal.email}
+                <div className="w-10 h-10 bg-blue-500/10 rounded-xl flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+                  <EnvelopeIcon className="w-5 h-5 text-blue-400" />
+                </div>
+                <span className="text-lg">{personal.email}</span>
               </motion.a>
-              <p className="text-gray-400">{personal.location}</p>
+              
+              <motion.div
+                className="flex items-center gap-3 text-gray-300"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
+                <div className="w-10 h-10 bg-purple-500/10 rounded-xl flex items-center justify-center">
+                  <MapPinIcon className="w-5 h-5 text-purple-400" />
+                </div>
+                <span className="text-lg">{personal.location}</span>
+              </motion.div>
             </div>
+          </motion.div>
 
-            {/* Social Links */}
-            <div className="flex space-x-4">
+          {/* Social Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <h4 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+              <motion.div
+                className="w-1 h-8 bg-gradient-to-b from-cyan-400 to-blue-400 rounded-full"
+                animate={{ scaleY: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+              />
+              Connect
+            </h4>
+            
+            <div className="flex flex-wrap gap-4">
               {socials.map((social, index) => (
                 <motion.a
                   key={social.name}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-white/5 backdrop-blur-xl rounded-2xl flex items-center justify-center border border-white/10 group hover:border-blue-400/50 transition-all duration-300 cursor-hover"
-                  whileHover={{ scale: 1.1, y: -3 }}
+                  className="relative w-14 h-14 bg-white/5 backdrop-blur-xl rounded-2xl flex items-center justify-center border border-white/10 group hover:border-blue-400/50 transition-all duration-300 cursor-pointer overflow-hidden"
+                  whileHover={{ scale: 1.15, y: -5, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.7 + index * 0.1, duration: 0.5, type: "spring" }}
                 >
                   {/* Glowing background effect */}
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl opacity-0 group-hover:opacity-100"
+                    className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-2xl opacity-0 group-hover:opacity-100"
                     whileHover={{ scale: 1.2 }}
                     transition={{ duration: 0.3 }}
+                  />
+                  
+                  {/* Sparkle on hover */}
+                  <motion.div
+                    className="absolute top-1 right-1 w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100"
+                    animate={{
+                      scale: [0, 1, 0],
+                      opacity: [0, 1, 0],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                    }}
                   />
                   
                   {/* Social Icons */}
@@ -219,24 +389,34 @@ export function Footer() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center"
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4"
         >
-          <div className="flex items-center text-gray-400 text-sm mb-4 sm:mb-0">
+          <div className="flex items-center text-gray-400 text-sm">
             <span>© {currentYear} {personal.name}. Made with</span>
-            <HeartIcon className="w-4 h-4 text-red-500 mx-2" />
+            <motion.div
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 1, repeat: Infinity }}
+            >
+              <HeartIcon className="w-4 h-4 text-red-500 mx-2" />
+            </motion.div>
             <span>using Next.js & Tailwind CSS</span>
           </div>
           
           {/* Back to Top Button */}
           <motion.button
             onClick={scrollToTop}
-            className="flex items-center space-x-2 text-gray-400 hover:text-blue-400 transition-colors cursor-hover group"
-            whileHover={{ y: -2 }}
+            className="flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 rounded-xl border border-white/10 hover:border-blue-400/50 text-gray-400 hover:text-blue-400 transition-all cursor-pointer group"
+            whileHover={{ y: -3, scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="text-sm">Back to top</span>
-            <ArrowUpIcon className="w-4 h-4 group-hover:translate-y-[-2px] transition-transform" />
+            <span className="text-sm font-medium">Back to top</span>
+            <motion.div
+              animate={{ y: [0, -3, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              <ArrowUpIcon className="w-4 h-4" />
+            </motion.div>
           </motion.button>
         </motion.div>
       </div>

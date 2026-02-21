@@ -1,10 +1,14 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import { EpicCursor } from '@/components/ui/epic-cursor'
 import { SmoothScroll, MagneticElements, ParallaxElements, PageLoader } from '@/components/ui/page-transitions'
 
-const inter = Inter({ subsets: ['latin'] })
+const spaceGrotesk = Space_Grotesk({ 
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-space-grotesk',
+})
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -78,7 +82,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={spaceGrotesk.className}>
         <PageLoader />
         <EpicCursor />
         <SmoothScroll />

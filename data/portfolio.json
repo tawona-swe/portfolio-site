@@ -112,17 +112,17 @@
       "featured": true
     },
     {
-      "id": 3,
-      "title": "AFINET Customer Portal",
-      "description": "Telone, Zol like customer portal where customer can purchase fibre-based operations and data.",
-      "image": "/images/projects/afinet.png",
-      "technologies": ["Spring/Spring Boot", "NextJS", "GitHub Actions CI/CD", "Docker", "MySQL"],
-      "github": "https://github.com/tawonaqh/afinet-customer-portal",
-      "demo": "http://afinetportal.duckdns.org/",
-      "featured": true
+      "id": 2,
+      "title": "Taxcul App with AI Assistant",
+      "description": "A comprehensive web application for calculating various types of taxes in Zimbabwe. Built with Next.js, React, and modern web technologies.",
+      "image": "/images/projects/taxcul.png",
+      "technologies": ["Laravel", "NextJS", "Vercel", "MySQL"],
+      "github": "https://github.com/tawonaqh/tax-calculator",
+      "demo": "https://www.taxcul.com/",
+      "featured": false
     },
     {
-      "id": 4,
+      "id": 3,
       "title": "NLP Patient Referral Mobile App",
       "description": "AI-powered mobile application for patient referral system using Natural Language Processing. Streamlines healthcare communication and patient data management.",
       "image": "/images/projects/project-placeholder.png",
@@ -132,17 +132,17 @@
       "featured": true
     },
     {
-      "id": 6,
-      "title": "Taxcul App",
-      "description": "A comprehensive web application for calculating various types of taxes in Zimbabwe. Built with Next.js, React, and modern web technologies.",
-      "image": "/images/projects/taxcul.png",
-      "technologies": ["Laravel", "NextJS", "Vercel", "MySQL"],
-      "github": "https://github.com/tawonaqh/tax-calculator",
-      "demo": "https://www.taxcul.com/",
-      "featured": false
+      "id": 4,
+      "title": "AFINET Customer Portal",
+      "description": "Telone, Zol like customer portal where customer can purchase fibre-based operations and data.",
+      "image": "/images/projects/afinet.png",
+      "technologies": ["Spring/Spring Boot", "NextJS", "GitHub Actions CI/CD", "Docker", "MySQL"],
+      "github": "https://github.com/tawonaqh/afinet-customer-portal",
+      "demo": "http://afinetportal.duckdns.org/",
+      "featured": true
     },
     {
-      "id": 2,
+      "id": 5,
       "title": "Gramia School Management System",
       "description": "Comprehensive school management system with web and mobile applications. Features student management, grade tracking, communication tools, and administrative dashboards.",
       "image": "/images/projects/gramia.png",
@@ -152,7 +152,7 @@
       "featured": true
     },
     {
-      "id": 5,
+      "id": 6,
       "title": "Housing Management System",
       "description": "Complete housing management solution with tenant management, rent tracking, maintenance requests, and financial reporting capabilities.",
       "image": "/images/projects/housing-management-system.jpeg",
