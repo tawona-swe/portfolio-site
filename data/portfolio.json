@@ -125,10 +125,10 @@
       "id": 3,
       "title": "NLP Patient Referral Mobile App",
       "description": "AI-powered mobile application for patient referral system using Natural Language Processing. Streamlines healthcare communication and patient data management.",
-      "image": "/images/projects/project-placeholder.png",
+      "image": "/images/projects/nlp-patient-referral.png",
       "technologies": ["React Native", "Django", "NLP", "Python", "PostgreSQL"],
       "github": "https://github.com/tawona-swe/nlp-patient-referral-v2.0",
-      "demo": "https://github.com/tawona-swe/nlp-patient-referral-v2.0",
+      "demo": "documents/referAI.apk",
       "featured": true
     },
     {
