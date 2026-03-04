@@ -128,7 +128,7 @@ export function EpicHeader() {
           {/* Desktop Navigation with Floating Effect - Centered */}
           <div className="hidden md:block">
             <motion.div 
-              className="relative flex items-center space-x-1 bg-gradient-to-r from-white/10 via-white/5 to-white/10 backdrop-blur-2xl rounded-full px-8 py-4 border border-white/20 shadow-2xl shadow-blue-500/10"
+              className="relative flex items-center space-x-1 bg-gradient-to-r from-white/10 via-white/5 to-white/10 backdrop-blur-2xl rounded-full px-6 py-3 border border-white/20 shadow-2xl shadow-blue-500/10"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
