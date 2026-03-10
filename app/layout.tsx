@@ -22,7 +22,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: 'Tawona Rwatida | Full Stack Software Developer',
-  description: 'Full Stack Software Developer specializing in scalable web and mobile applications. Expert in React, Next.js, Laravel, and Python. Key developer of TM Pick n Pay e-commerce platform serving 100k+ users.',
+  description: 'Full Stack Developer specializing in scalable web and mobile applications. Expert in React, Next.js, Laravel, and Python. Built TM Pick n Pay platform serving 100k+ users.',
   keywords: ['Tawona Rwatida', 'Full Stack Developer', 'Software Engineer', 'React', 'Next.js', 'Laravel', 'Python', 'E-commerce', 'Zimbabwe', 'Web Development', 'Mobile Apps', 'Software Development', 'Web Developer', 'Backend Developer', 'Frontend Developer'],
   authors: [{ name: 'Tawona Rwatida' }],
   creator: 'Tawona Rwatida',
