@@ -4,6 +4,8 @@ import './globals.css'
 import { EpicCursor } from '@/components/ui/epic-cursor'
 import { SmoothScroll, MagneticElements, ParallaxElements, PageLoader } from '@/components/ui/page-transitions'
 import { Analytics } from "@vercel/analytics/next"
+import { StructuredData } from '@/components/ui/structured-data'
+import { getPersonSchema, getOrganizationSchema } from '@/lib/structured-data'
 
 const spaceGrotesk = Space_Grotesk({ 
   subsets: ['latin'],
@@ -21,7 +23,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'Tawona Rwatida | Full Stack Software Developer',
   description: 'Full Stack Software Developer specializing in scalable web and mobile applications. Expert in React, Next.js, Laravel, and Python. Key developer of TM Pick n Pay e-commerce platform serving 100k+ users.',
-  keywords: ['Tawona Rwatida', 'Full Stack Developer', 'Software Engineer', 'React', 'Next.js', 'Laravel', 'Python', 'E-commerce', 'Zimbabwe', 'Web Development', 'Mobile Apps'],
+  keywords: ['Tawona Rwatida', 'Full Stack Developer', 'Software Engineer', 'React', 'Next.js', 'Laravel', 'Python', 'E-commerce', 'Zimbabwe', 'Web Development', 'Mobile Apps', 'Software Development', 'Web Developer', 'Backend Developer', 'Frontend Developer'],
   authors: [{ name: 'Tawona Rwatida' }],
   creator: 'Tawona Rwatida',
   publisher: 'Tawona Rwatida',
@@ -42,7 +44,7 @@ export const metadata: Metadata = {
     title: 'Tawona Rwatida | Full Stack Software Developer',
     description: 'Full Stack Software Developer specializing in scalable web and mobile applications. Expert in React, Next.js, Laravel, and Python. Key developer of TM Pick n Pay e-commerce platform serving 100k+ users.',
     type: 'website',
-    url: 'https://tawona-swe.github.io',
+    url: 'https://tawonarwatida.co.zw',
     siteName: 'Tawona Rwatida Portfolio',
     locale: 'en_US',
     images: [
@@ -59,6 +61,7 @@ export const metadata: Metadata = {
     title: 'Tawona Rwatida | Full Stack Software Developer',
     description: 'Full Stack Software Developer specializing in scalable web and mobile applications. Expert in React, Next.js, Laravel, and Python.',
     images: ['/images/avatar.png'],
+    creator: '@tawonaqh',
   },
   robots: {
     index: true,
@@ -72,7 +75,10 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://tawona-swe.github.io',
+    canonical: 'https://tawonarwatida.co.zw',
+    types: {
+      'application/rss+xml': 'https://tawonarwatida.co.zw/feed.xml',
+    },
   },
 }
 
@@ -83,6 +89,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <StructuredData data={getPersonSchema()} />
+        <StructuredData data={getOrganizationSchema()} />
+      </head>
       <body className={spaceGrotesk.className}>
         <PageLoader />
         <Analytics/>

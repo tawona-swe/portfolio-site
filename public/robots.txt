@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /.next/
+Disallow: /node_modules/
+
+Sitemap: https://tawonarwatida.co.zw/sitemap.xml
+
+# Crawl delay to be respectful
+Crawl-delay: 1
