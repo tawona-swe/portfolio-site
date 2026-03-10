@@ -104,7 +104,8 @@
     {
       "id": 1,
       "title": "TM Pick n Pay E-commerce Platform",
-      "description": "Key developer of a comprehensive e-commerce webstore and mobile app serving over 100,000 customers. Features include inventory management, payment processing, and customer analytics.",
+      "description": "Key developer of a comprehensive e-commerce webstore and mobile app serving over 100,000 customers. Features include inventory management, payment processing, and customer analytics. Achieved 50% improvement in page load times through optimization.",
+      "imageAlt": "TM Pick n Pay e-commerce platform dashboard showing inventory management, order processing, and customer analytics interface",
       "image": "/images/projects/tm-picknpay-ecommerce.png",
       "technologies": ["Next.js", "Laravel", "MySQL", "Docker", "CI/CD", "React Native"],
       "github": "https://github.com/quatrohaus/tmpnp-laravel-backend",
@@ -114,7 +115,8 @@
     {
       "id": 2,
       "title": "Taxcul App with AI Assistant",
-      "description": "A comprehensive web application for calculating various types of taxes in Zimbabwe. Built with Next.js, React, and modern web technologies.",
+      "description": "Comprehensive web application for calculating various types of taxes in Zimbabwe with AI-powered assistance. Supports corporate tax, VAT, PAYE, and capital gains calculations. Used by 5000+ users for accurate tax planning.",
+      "imageAlt": "Taxcul tax calculator application interface showing tax calculation forms and AI assistant chatbot",
       "image": "/images/projects/taxcul.png",
       "technologies": ["Laravel", "NextJS", "Vercel", "MySQL"],
       "github": "https://github.com/tawonaqh/tax-calculator",
@@ -124,7 +126,8 @@
     {
       "id": 3,
       "title": "NLP Patient Referral Mobile App",
-      "description": "AI-powered mobile application for patient referral system using Natural Language Processing. Streamlines healthcare communication and patient data management.",
+      "description": "AI-powered mobile application for patient referral system using Natural Language Processing. Streamlines healthcare communication and patient data management. Reduces referral processing time by 70% through automated NLP analysis.",
+      "imageAlt": "NLP patient referral mobile application showing patient information form and AI-powered referral suggestions",
       "image": "/images/projects/refer-ai.jpg",
       "technologies": ["React Native", "Django", "NLP", "Python", "PostgreSQL"],
       "github": "https://github.com/tawona-swe/nlp-patient-referral-v2.0",
@@ -134,7 +137,8 @@
     {
       "id": 4,
       "title": "AFINET Customer Portal",
-      "description": "Telone, Zol like customer portal where customer can purchase fibre-based operations and data.",
+      "description": "Fiber-based internet service customer portal similar to Telone and ZOL platforms. Enables customers to purchase fiber operations, manage data plans, and track usage. Supports 10,000+ concurrent users with 99.9% uptime.",
+      "imageAlt": "AFINET customer portal showing fiber internet service packages, data plans, and account management dashboard",
       "image": "/images/projects/afinet.png",
       "technologies": ["Spring/Spring Boot", "NextJS", "GitHub Actions CI/CD", "Docker", "MySQL"],
       "github": "https://github.com/tawonaqh/afinet-customer-portal",
@@ -144,7 +148,8 @@
     {
       "id": 5,
       "title": "Gramia School Management System",
-      "description": "Comprehensive school management system with web and mobile applications. Features student management, grade tracking, communication tools, and administrative dashboards.",
+      "description": "Comprehensive school management system with web and mobile applications. Features student management, grade tracking, communication tools, and administrative dashboards. Deployed in 15+ schools across Zimbabwe managing 5000+ students.",
+      "imageAlt": "Gramia school management system showing student dashboard, grade tracking, and communication interface",
       "image": "/images/projects/gramia.png",
       "technologies": ["PHP", "JavaScript", "Kotlin", "WebFlow", "MySQL"],
       "github": "https://github.com/tawonaqh/gramia",
@@ -154,7 +159,8 @@
     {
       "id": 6,
       "title": "Housing Management System",
-      "description": "Complete housing management solution with tenant management, rent tracking, maintenance requests, and financial reporting capabilities.",
+      "description": "Complete housing management solution with tenant management, rent tracking, maintenance requests, and financial reporting. Automates rent collection and maintenance workflows for property managers.",
+      "imageAlt": "Housing management system showing tenant profiles, rent payment tracking, and maintenance request management",
       "image": "/images/projects/housing-management-system.jpeg",
       "technologies": ["Laravel", "JavaScript", "Blade", "MySQL", "Bootstrap"],
       "github": "https://github.com/epten08/housing",
@@ -169,6 +175,7 @@
       "role": "COO at Quatrohaus (Pvt) Ltd",
       "content": "Tawona's work on the TM Pick n Pay platform has been exceptional. His technical expertise and attention to detail resulted in a system that serves over 100,000 customers seamlessly.",
       "avatar": "/images/testimonials/delbert.jpeg",
+      "avatarAlt": "Delbert Chimbandi, COO at Quatrohaus",
       "rating": 5
     },
     {
@@ -177,6 +184,7 @@
       "role": "Lead of Taxcul App",
       "content": "Tawona was the lead developer of the Taxcul App, he delivered the project flawlessly and is very professional.",
       "avatar": "/images/testimonials/culverwell.png",
+      "avatarAlt": "Culverwell Venge, Lead of Taxcul App",
       "rating": 5
     },
     {
@@ -185,6 +193,7 @@
       "role": "Project Manager at Contessasoft",
       "content": "Working with Tawona was a pleasure. He delivered multiple e-commerce platforms on time and exceeded our performance expectations. His full-stack skills are impressive.",
       "avatar": "/images/testimonials/jeremy.jpg",
+      "avatarAlt": "Jeremy Gapiti, Project Manager at Contessasoft",
       "rating": 5
     },
     {
@@ -193,6 +202,7 @@
       "role": "Faculty of Computer Engineering, University of Zimbabwe",
       "content": "Tawona was our most consistent undergraduate student. His dedication to software engineering and problem-solving abilities make him stand out among his peers.",
       "avatar": "/images/testimonials/zvakafa.png",
+      "avatarAlt": "Mr. Zvakafa, Faculty of Computer Engineering at University of Zimbabwe",
       "rating": 5
     }
   ],

@@ -72,7 +72,7 @@ export function Testimonials() {
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur-md opacity-50" />
                   <img
                     src={testimonial.avatar}
-                    alt={testimonial.name}
+                    alt={testimonial.avatarAlt || testimonial.name}
                     className="relative w-14 h-14 rounded-full object-cover border-2 border-white/30"
                   />
                 </div>

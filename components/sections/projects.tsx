@@ -55,7 +55,7 @@ export function Projects() {
                 <div className="relative overflow-hidden">
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={project.imageAlt || project.title}
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   {project.featured && (

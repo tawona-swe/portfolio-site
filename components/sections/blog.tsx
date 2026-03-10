@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { CalendarIcon, ClockIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
 import { staggerContainer, staggerItem } from '@/lib/motion'
 import { formatDate } from '@/lib/utils'
 import portfolioData from '@/data/portfolio.json'
@@ -36,85 +37,88 @@ export function Blog() {
           {/* Blog Posts Grid */}
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {portfolioData.blog.map((post, index) => (
-              <motion.article
-                key={post.id}
-                variants={staggerItem}
-                whileHover={{ y: -5 }}
-                className="group bg-background/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-primary-400/50 transition-all duration-300 cursor-hover"
-              >
-                {/* Post Image */}
-                <div className="relative overflow-hidden">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                </div>
-
-                {/* Post Content */}
-                <div className="p-6">
-                  {/* Meta Info */}
-                  <div className="flex items-center text-foreground/60 text-sm mb-3 space-x-4">
-                    <div className="flex items-center">
-                      <CalendarIcon className="w-4 h-4 mr-1" />
-                      {formatDate(post.date)}
-                    </div>
-                    <div className="flex items-center">
-                      <ClockIcon className="w-4 h-4 mr-1" />
-                      {post.readTime}
-                    </div>
+              <Link key={post.id} href={`/blog/${post.slug}`}>
+                <motion.article
+                  variants={staggerItem}
+                  whileHover={{ y: -5 }}
+                  className="group bg-background/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-primary-400/50 transition-all duration-300 cursor-hover h-full"
+                >
+                  {/* Post Image */}
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={`${post.title} - Blog post cover image`}
+                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary-400 transition-colors">
-                    {post.title}
-                  </h3>
+                  {/* Post Content */}
+                  <div className="p-6">
+                    {/* Meta Info */}
+                    <div className="flex items-center text-foreground/60 text-sm mb-3 space-x-4">
+                      <div className="flex items-center">
+                        <CalendarIcon className="w-4 h-4 mr-1" />
+                        {formatDate(post.date)}
+                      </div>
+                      <div className="flex items-center">
+                        <ClockIcon className="w-4 h-4 mr-1" />
+                        {post.readTime}
+                      </div>
+                    </div>
 
-                  {/* Excerpt */}
-                  <p className="text-foreground/70 text-sm mb-4 line-clamp-3">
-                    {post.excerpt}
-                  </p>
+                    {/* Title */}
+                    <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary-400 transition-colors">
+                      {post.title}
+                    </h3>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {post.tags.map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className="px-2 py-1 bg-primary-500/10 text-primary-400 rounded text-xs font-medium"
+                    {/* Excerpt */}
+                    <p className="text-foreground/70 text-sm mb-4 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {post.tags.map((tag, tagIndex) => (
+                        <span
+                          key={tagIndex}
+                          className="px-2 py-1 bg-primary-500/10 text-primary-400 rounded text-xs font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Read More */}
+                    <div className="flex items-center text-primary-400 text-sm font-medium group-hover:text-primary-300 transition-colors">
+                      Read more
+                      <svg
+                        className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
                       >
-                        {tag}
-                      </span>
-                    ))}
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </div>
                   </div>
-
-                  {/* Read More */}
-                  <div className="flex items-center text-primary-400 text-sm font-medium group-hover:text-primary-300 transition-colors">
-                    Read more
-                    <svg
-                      className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </motion.article>
+                </motion.article>
+              </Link>
             ))}
           </div>
 
           {/* View All Posts Button */}
           <motion.div variants={staggerItem} className="text-center mt-12">
-            <button className="px-8 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transition-colors cursor-hover">
-              View All Posts
-            </button>
+            <Link href="/blog">
+              <button className="px-8 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transition-colors cursor-hover">
+                View All Posts
+              </button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

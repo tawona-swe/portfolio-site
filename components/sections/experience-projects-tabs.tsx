@@ -163,7 +163,7 @@ export function ExperienceProjectsTabs() {
                         <div className="relative overflow-hidden h-48">
                           <motion.img
                             src={project.image}
-                            alt={project.title}
+                            alt={project.imageAlt || project.title}
                             className="w-full h-full object-cover"
                             whileHover={{ scale: 1.1 }}
                             transition={{ duration: 0.4 }}
