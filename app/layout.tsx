@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   openGraph: {
-    title: 'Tawona Rwatida | Full Stack Software Developer',
+    title: 'Tawona Rwatida | Full Stack Developer - Portfolio',
     description: 'Full Stack Software Developer specializing in scalable web and mobile applications. Expert in React, Next.js, Laravel, and Python. Key developer of TM Pick n Pay e-commerce platform serving 100k+ users.',
     type: 'website',
     url: 'https://tawonarwatida.co.zw',
