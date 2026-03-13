@@ -12,6 +12,7 @@ export function ExperienceProjectsTabs() {
     threshold: 0.1,
   })
   const [activeTab, setActiveTab] = useState<'experience' | 'projects'>('projects')
+  const [viewAllProjects, setViewAllProjects] = useState(false)
 
   return (
     <section id="work" className="relative py-20 bg-foreground/5">
@@ -125,7 +126,7 @@ export function ExperienceProjectsTabs() {
                 className="max-w-6xl mx-auto"
               >
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {portfolioData.projects.slice(0, 6).map((project, index) => {
+                  {(viewAllProjects ? portfolioData.projects : portfolioData.projects.slice(0, 6)).map((project, index) => {
                     const colors = [
                       { from: 'from-blue-500/10', to: 'to-purple-500/10', border: 'border-blue-400/30' },
                       { from: 'from-purple-500/10', to: 'to-pink-500/10', border: 'border-purple-400/30' },
@@ -169,15 +170,19 @@ export function ExperienceProjectsTabs() {
                             transition={{ duration: 0.4 }}
                           />
                           
-                          {/* Featured badge */}
-                          {project.featured && (
+                          {/* Type badge */}
+                          {project.type && (
                             <motion.div
                               initial={{ scale: 0, rotate: -180 }}
                               whileInView={{ scale: 1, rotate: 0 }}
                               transition={{ delay: 0.3, type: "spring" }}
-                              className="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-bold rounded-full shadow-lg"
+                              className={`absolute top-4 left-4 px-3 py-1 text-white text-xs font-bold rounded-full shadow-lg ${
+                                project.type === 'work' 
+                                  ? 'bg-gradient-to-r from-blue-500 to-blue-600' 
+                                  : 'bg-gradient-to-r from-purple-500 to-purple-600'
+                              }`}
                             >
-                              ⭐ Featured
+                              {project.type === 'work' ? '💼 Work' : '🚀 Personal'}
                             </motion.div>
                           )}
                           
@@ -251,6 +256,20 @@ export function ExperienceProjectsTabs() {
                     )
                   })}
                 </div>
+
+                {/* View All Projects Button */}
+                {portfolioData.projects.length > 6 && (
+                  <div className="text-center mt-12">
+                    <motion.button
+                      onClick={() => setViewAllProjects(!viewAllProjects)}
+                      className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-lg font-medium transition-all duration-300 shadow-lg"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {viewAllProjects ? 'Show Less Projects' : 'View All Projects'}
+                    </motion.button>
+                  </div>
+                )}
               </motion.div>
             )}
           </AnimatePresence>

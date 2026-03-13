@@ -58,9 +58,11 @@ export function Projects() {
                     alt={project.imageAlt || project.title}
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  {project.featured && (
-                    <div className="absolute top-4 left-4 px-3 py-1 bg-primary-500 text-white text-xs font-medium rounded-full">
-                      Featured
+                  {project.type && (
+                    <div className={`absolute top-4 left-4 px-3 py-1 text-white text-xs font-medium rounded-full ${
+                      project.type === 'work' ? 'bg-blue-500' : 'bg-purple-500'
+                    }`}>
+                      {project.type.charAt(0).toUpperCase() + project.type.slice(1)}
                     </div>
                   )}
                   
