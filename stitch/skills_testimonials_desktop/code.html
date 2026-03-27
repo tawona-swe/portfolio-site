@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skills &amp; Testimonials | Tawona - Kinetic Luminalist</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed-dim": "#65a4ff",
+                        "secondary": "#69f6b8",
+                        "on-primary-fixed-variant": "#006266",
+                        "surface-container-lowest": "#000000",
+                        "on-tertiary-fixed-variant": "#003971",
+                        "on-secondary-container": "#e1ffec",
+                        "outline": "#6d758c",
+                        "primary": "#a1faff",
+                        "inverse-on-surface": "#4d556b",
+                        "on-tertiary": "#002a55",
+                        "primary-dim": "#00e5ee",
+                        "on-surface-variant": "#a3aac4",
+                        "surface-container-highest": "#192540",
+                        "on-primary": "#006165",
+                        "error": "#ff716c",
+                        "tertiary-dim": "#5c9ffc",
+                        "surface-container": "#0f1930",
+                        "tertiary-fixed": "#80b2ff",
+                        "inverse-surface": "#faf8ff",
+                        "on-tertiary-container": "#001d3f",
+                        "secondary-fixed-dim": "#58e7ab",
+                        "inverse-primary": "#006a6e",
+                        "surface-container-low": "#091328",
+                        "background": "#060e20",
+                        "on-primary-container": "#00575b",
+                        "surface-dim": "#060e20",
+                        "surface-container-high": "#141f38",
+                        "on-background": "#dee5ff",
+                        "on-surface": "#dee5ff",
+                        "tertiary": "#70aaff",
+                        "outline-variant": "#40485d",
+                        "tertiary-container": "#599cf9",
+                        "on-primary-fixed": "#004346",
+                        "on-tertiary-fixed": "#001835",
+                        "on-error": "#490006",
+                        "secondary-container": "#006c49",
+                        "on-error-container": "#ffa8a3",
+                        "error-dim": "#d7383b",
+                        "surface-tint": "#a1faff",
+                        "primary-fixed": "#00f4fe",
+                        "primary-container": "#00f4fe",
+                        "on-secondary-fixed": "#00452d",
+                        "surface": "#060e20",
+                        "secondary-fixed": "#69f6b8",
+                        "primary-fixed-dim": "#00e5ee",
+                        "surface-bright": "#1f2b49",
+                        "error-container": "#9f0519",
+                        "surface-variant": "#192540",
+                        "on-secondary-fixed-variant": "#006544",
+                        "secondary-dim": "#58e7ab",
+                        "on-secondary": "#005a3c"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(25, 37, 64, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .neon-glow:hover {
+            box-shadow: 0 0 20px rgba(0, 229, 238, 0.15);
+        }
+        .skill-track {
+            height: 4px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-dim selection:text-on-primary-fixed">
+<!-- TopNavBar: Authority Source JSON -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#060e20]/80 backdrop-blur-xl font-['Space_Grotesk'] tracking-tight">
+<div class="text-2xl font-bold tracking-tighter text-[#00E5FF]">KINETIC_LUMINALIST</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-[#dee5ff]/70 hover:text-[#00E5FF] transition-colors" href="#">Projects</a>
+<a class="text-[#dee5ff]/70 hover:text-[#00E5FF] transition-colors" href="#">Experience</a>
+<a class="text-[#00E5FF] border-b-2 border-[#00E5FF] pb-1" href="#">Skills</a>
+<a class="text-[#dee5ff]/70 hover:text-[#00E5FF] transition-colors" href="#">Contact</a>
+</nav>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-xl font-medium active:scale-95 transition-transform">Resume</button>
+</header>
+<!-- SideNavBar: Authority Source JSON -->
+<aside class="fixed left-0 top-0 h-full hidden lg:flex flex-col py-8 bg-[#091328] w-64 shadow-[40px_0_40px_rgba(0,229,255,0.04)] z-40">
+<div class="px-8 mb-12">
+<div class="text-xl font-black text-[#00E5FF] font-headline">Luminalist</div>
+<div class="text-xs text-on-surface-variant font-label uppercase tracking-widest mt-1">Software Architect</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-4 px-8 py-4 text-[#a3aac4] hover:bg-[#141f38]/50 transition-all" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-headline text-sm">Overview</span>
+</a>
+<a class="flex items-center gap-4 px-8 py-4 text-[#00E5FF] font-bold bg-[#141f38] border-r-4 border-[#00E5FF] translate-x-1 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-headline text-sm">Stack</span>
+</a>
+<a class="flex items-center gap-4 px-8 py-4 text-[#a3aac4] hover:bg-[#141f38]/50 transition-all" href="#">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span class="font-headline text-sm">Portfolio</span>
+</a>
+<a class="flex items-center gap-4 px-8 py-4 text-[#a3aac4] hover:bg-[#141f38]/50 transition-all" href="#">
+<span class="material-symbols-outlined">timeline</span>
+<span class="font-headline text-sm">History</span>
+</a>
+</nav>
+<div class="px-8 mt-auto">
+<button class="w-full py-3 bg-surface-container-high text-primary font-headline text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-surface-container-highest transition-colors">Get in Touch</button>
+</div>
+</aside>
+<main class="lg:ml-64 pt-28 pb-20 px-8 md:px-16 max-w-7xl mx-auto">
+<!-- Header Section -->
+<section class="mb-24">
+<h2 class="text-secondary font-headline text-lg md:text-xl font-medium mb-4">Technical Proficiency</h2>
+<h1 class="text-on-surface font-headline text-5xl md:text-7xl font-bold tracking-tighter leading-none">
+                Engineering <br/> <span class="text-primary-dim">with Precision.</span>
+</h1>
+</section>
+<!-- Skills Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-32">
+<!-- Frontend Stack -->
+<div class="md:col-span-8 glass-card rounded-xl p-8 neon-glow border-none">
+<div class="flex items-center gap-4 mb-10">
+<span class="material-symbols-outlined text-primary text-3xl">brush</span>
+<h3 class="font-headline text-2xl font-bold">Frontend Engineering</h3>
+</div>
+<div class="space-y-8">
+<div>
+<div class="flex justify-between items-end mb-3">
+<span class="font-headline text-lg">JS / TypeScript</span>
+<span class="font-label text-sm text-on-surface-variant">Expert</span>
+</div>
+<div class="w-full bg-surface-container-highest skill-track overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-secondary-dim w-[95%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-end mb-3">
+<span class="font-headline text-lg">React.js</span>
+<span class="font-label text-sm text-on-surface-variant">Advanced</span>
+</div>
+<div class="w-full bg-surface-container-highest skill-track overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-secondary-dim w-[90%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-end mb-3">
+<span class="font-headline text-lg">Next.js</span>
+<span class="font-label text-sm text-on-surface-variant">Advanced</span>
+</div>
+<div class="w-full bg-surface-container-highest skill-track overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-secondary-dim w-[88%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Infrastructure Small Card -->
+<div class="md:col-span-4 bg-surface-container-low rounded-xl p-8 border-none">
+<div class="flex flex-col h-full">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-6">cloud_done</span>
+<h3 class="font-headline text-2xl font-bold mb-6">Infrastructure</h3>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary"></div>
+<span class="font-body text-on-surface-variant">Docker &amp; K8s</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary"></div>
+<span class="font-body text-on-surface-variant">AWS Ecosystem</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary"></div>
+<span class="font-body text-on-surface-variant">PostgreSQL &amp; SQL</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary"></div>
+<span class="font-body text-on-surface-variant">CI/CD Pipelines</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Backend Stack -->
+<div class="md:col-span-12 glass-card rounded-xl p-8 neon-glow border-none">
+<h3 class="font-headline text-2xl font-bold mb-10 flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-dim">database</span>
+                    Backend Systems
+                </h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div>
+<div class="flex justify-between items-end mb-3">
+<span class="font-headline text-lg">PHP / Laravel</span>
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Core</span>
+</div>
+<div class="w-full bg-surface-container-highest skill-track overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-secondary-dim w-[92%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-end mb-3">
+<span class="font-headline text-lg">Python</span>
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Data &amp; API</span>
+</div>
+<div class="w-full bg-surface-container-highest skill-track overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-secondary-dim w-[85%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-end mb-3">
+<span class="font-headline text-lg">Node.js</span>
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Runtime</span>
+</div>
+<div class="w-full bg-surface-container-highest skill-track overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-secondary-dim w-[80%]"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="mb-32">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-xl">
+<h2 class="text-secondary font-headline text-lg font-medium mb-4">Words from Partners</h2>
+<h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight">Vouched by the <span class="text-primary">Industry Best.</span></h2>
+</div>
+<div class="flex gap-4">
+<button class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">west</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-surface-container-high transition-colors text-primary">
+<span class="material-symbols-outlined">east</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-surface-container rounded-xl p-10 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-secondary text-5xl opacity-20 mb-6" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<p class="text-on-surface text-xl md:text-2xl font-light italic leading-relaxed mb-8">
+                            "Tawona has an uncanny ability to translate complex architectural requirements into elegant, high-performance code. His work on our core infrastructure was transformative."
+                        </p>
+</div>
+<div class="flex items-center gap-4">
+<img alt="Delbert Chimbandi" class="w-14 h-14 rounded-full object-cover grayscale" data-alt="professional headshot of a middle-aged male executive in a dark suit with soft studio lighting and a clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2B5yQ2cJzu7xTmEqR5tpdAZQjYpfWhipoSDTWlSRXQWf72vmn-c7E-fIO7rKIRQ2c4GdckGHKFqW3vL3p8IAw_qJxKlhteltZ3zUiKorKJ36bdSWVpC-jdfyDy_TzXC5AAGkPNGQGTLGQEuULeyoaZ8E_xzUUUNZhFtEE8T3yCK1OET0vhH5ftwdl4mq8CRYBJfKKvJfJCeEbEz9oHeZ_XLYRtl3WOQdZZ7RAzlU_oXeMe-7hl_2QyZbU0FREAF5RskTZyi4x04tn"/>
+<div>
+<div class="font-headline font-bold text-on-surface">Delbert Chimbandi</div>
+<div class="font-label text-xs uppercase tracking-widest text-on-surface-variant">CTO @ NexGen Systems</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-surface-container rounded-xl p-10 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-secondary text-5xl opacity-20 mb-6" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<p class="text-on-surface text-xl md:text-2xl font-light italic leading-relaxed mb-8">
+                            "One of the few developers who truly understands the intersection of product design and scalable engineering. A rare talent in the modern stack ecosystem."
+                        </p>
+</div>
+<div class="flex items-center gap-4">
+<img alt="Culverwell Venge" class="w-14 h-14 rounded-full object-cover grayscale" data-alt="headshot of a confident professional male in business casual attire with natural daylight and blurred city background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0rppk-CyRr9p3r6GT86P_x6P5cpnz2p9CXvRBAVvZFl_k-SJ8JC6g3uyyRaQM0xgujtMjE3MIIlFrF8qbVLffyz0MiVEg-fxgZRyi_t5b9K0mqAZd0yR8nB693HKwGrIOXPjN1kLZwJwFZw_vmFgQTtJmV0ntECPmiJ5_HIrMxE424_m8ylEQ1WDzWENfb6u-2EzHldOJqKTN-9UE401uTo6mQdVsQpE98TN_YXY-heFTuTY84MrgAjZdOmoZhoWxdmbRtu0jf6N3"/>
+<div>
+<div class="font-headline font-bold text-on-surface">Culverwell Venge</div>
+<div class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Senior Lead @ Lumina Digital</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="relative rounded-2xl overflow-hidden bg-surface-container-high p-12 md:p-20 text-center">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 pointer-events-none"></div>
+<h2 class="font-headline text-4xl md:text-6xl font-bold mb-8 relative z-10">Ready to build something <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">extraordinary?</span></h2>
+<p class="text-on-surface-variant text-lg max-w-2xl mx-auto mb-12 relative z-10">Currently accepting high-impact projects. Let's discuss how we can leverage light and code to create your next digital masterpiece.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+<button class="px-10 py-4 bg-primary text-on-primary font-headline font-bold rounded-xl hover:shadow-[0_0_30px_rgba(161,250,255,0.3)] transition-all">Start a Project</button>
+<button class="px-10 py-4 border border-outline-variant/30 text-on-surface font-headline font-bold rounded-xl hover:bg-surface-container-highest transition-all">Schedule a Call</button>
+</div>
+</section>
+</main>
+<!-- Footer: Authority Source JSON -->
+<footer class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-4 bg-[#060e20] border-t border-outline-variant/10">
+<div class="font-['Inter'] text-xs uppercase tracking-widest text-[#a3aac4]">
+            © 2024 KINETIC LUMINALIST • ENGINEERED WITH LIGHT
+        </div>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="#">Github</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="#">LinkedIn</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="#">Source</a>
+</div>
+</footer>
+</body></html>

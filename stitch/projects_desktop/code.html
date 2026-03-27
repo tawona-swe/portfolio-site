@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Projects | KINETIC LUMINALIST</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed-dim": "#65a4ff",
+                        "secondary": "#69f6b8",
+                        "on-primary-fixed-variant": "#006266",
+                        "surface-container-lowest": "#000000",
+                        "on-tertiary-fixed-variant": "#003971",
+                        "on-secondary-container": "#e1ffec",
+                        "outline": "#6d758c",
+                        "primary": "#a1faff",
+                        "inverse-on-surface": "#4d556b",
+                        "on-tertiary": "#002a55",
+                        "primary-dim": "#00e5ee",
+                        "on-surface-variant": "#a3aac4",
+                        "surface-container-highest": "#192540",
+                        "on-primary": "#006165",
+                        "error": "#ff716c",
+                        "tertiary-dim": "#5c9ffc",
+                        "surface-container": "#0f1930",
+                        "tertiary-fixed": "#80b2ff",
+                        "inverse-surface": "#faf8ff",
+                        "on-tertiary-container": "#001d3f",
+                        "secondary-fixed-dim": "#58e7ab",
+                        "inverse-primary": "#006a6e",
+                        "surface-container-low": "#091328",
+                        "background": "#060e20",
+                        "on-primary-container": "#00575b",
+                        "surface-dim": "#060e20",
+                        "surface-container-high": "#141f38",
+                        "on-background": "#dee5ff",
+                        "on-surface": "#dee5ff",
+                        "tertiary": "#70aaff",
+                        "outline-variant": "#40485d",
+                        "tertiary-container": "#599cf9",
+                        "on-primary-fixed": "#004346",
+                        "on-tertiary-fixed": "#001835",
+                        "on-error": "#490006",
+                        "secondary-container": "#006c49",
+                        "on-error-container": "#ffa8a3",
+                        "error-dim": "#d7383b",
+                        "surface-tint": "#a1faff",
+                        "primary-fixed": "#00f4fe",
+                        "primary-container": "#00f4fe",
+                        "on-secondary-fixed": "#00452d",
+                        "surface": "#060e20",
+                        "secondary-fixed": "#69f6b8",
+                        "primary-fixed-dim": "#00e5ee",
+                        "surface-bright": "#1f2b49",
+                        "error-container": "#9f0519",
+                        "surface-variant": "#192540",
+                        "on-secondary-fixed-variant": "#006544",
+                        "secondary-dim": "#58e7ab",
+                        "on-secondary": "#005a3c"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(25, 37, 64, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #a1faff 0%, #00f4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#060e20]/80 backdrop-blur-xl no-border bg-[#091328] font-['Space_Grotesk'] tracking-tight">
+<div class="text-2xl font-bold tracking-tighter text-[#00E5FF]">KINETIC_LUMINALIST</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#00E5FF] border-b-2 border-[#00E5FF] pb-1" href="#">Projects</a>
+<a class="text-[#dee5ff]/70 hover:text-[#00E5FF] transition-colors" href="#">Experience</a>
+<a class="text-[#dee5ff]/70 hover:text-[#00E5FF] transition-colors" href="#">Skills</a>
+<a class="text-[#dee5ff]/70 hover:text-[#00E5FF] transition-colors" href="#">Contact</a>
+</nav>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-xl font-bold hover:scale-95 transition-transform duration-200">
+            Resume
+        </button>
+</header>
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full hidden lg:flex flex-col py-8 bg-[#091328] w-64 shadow-[40px_0_40px_rgba(0,229,255,0.04)] z-40">
+<div class="px-6 mb-12">
+<div class="text-xl font-black text-[#00E5FF] mb-1">Luminalist</div>
+<div class="text-xs text-on-surface-variant uppercase tracking-widest">Software Architect</div>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-4 px-6 py-3 text-[#a3aac4] hover:bg-[#141f38]/50 hover:text-[#00E5FF] transition-all group" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-['Space_Grotesk'] text-sm">Overview</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-[#00E5FF] font-bold bg-[#141f38] border-r-4 border-[#00E5FF] transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+<span class="font-['Space_Grotesk'] text-sm">Portfolio</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-[#a3aac4] hover:bg-[#141f38]/50 hover:text-[#00E5FF] transition-all group" href="#">
+<span class="material-symbols-outlined">timeline</span>
+<span class="font-['Space_Grotesk'] text-sm">History</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-[#a3aac4] hover:bg-[#141f38]/50 hover:text-[#00E5FF] transition-all group" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-['Space_Grotesk'] text-sm">Stack</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full py-3 bg-surface-container-highest text-primary border border-primary/20 rounded-xl font-bold hover:bg-primary hover:text-on-primary transition-all text-sm uppercase tracking-wider">
+                Get in Touch
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="lg:pl-64 pt-24 pb-20">
+<div class="max-w-7xl mx-auto px-8">
+<!-- Hero Header -->
+<section class="mb-16">
+<h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-on-surface">
+                    Selected <span class="text-gradient">Artifacts</span>
+</h1>
+<p class="text-on-surface-variant max-w-2xl text-lg mb-10 leading-relaxed">
+                    A chronicle of engineered solutions ranging from enterprise fintech portals to experimental AI-driven patient care architectures.
+                </p>
+<!-- Filter Logic -->
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-bold text-sm tracking-wide shadow-[0_0_20px_rgba(161,250,255,0.3)]">All Projects</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors font-medium text-sm tracking-wide">Work</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors font-medium text-sm tracking-wide">Personal</button>
+</div>
+</section>
+<!-- Projects Grid (Bento/Asymmetric) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Project 1: TM Pick n Pay (Large) -->
+<article class="md:col-span-8 group relative overflow-hidden glass-card rounded-full p-1 transition-all hover:shadow-[0_0_40px_rgba(0,229,255,0.08)]">
+<div class="relative h-96 overflow-hidden rounded-full">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="high-end retail interior with digital signage and futuristic checkout counters in a clean minimalist environment with cyan lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcjABcBsXlkgVTRuJL2mLEQuz66vzymyC2dykPNIjsEidq6KugLo9en5B2WX9iJUT1i7l5E1ZXZApC01vIgSaVpEOOeQehil-Cc0wNgnP8mou5y9dvqo5JXYuZTFjf-0nASS8q5KvKXLVuuLfIWgp9EZP64UDvsS56caSqHuPCEn0KZuscHhRSBVdVBeslzg4JvOoplg7OgxLFcdzGkfuNuCnMVOyysojJ3Diq-NZepJpejcyh-81GG8fNbVkpu5BcdxSwXkt0-E4I"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent opacity-90"></div>
+<div class="absolute bottom-8 left-8 right-8">
+<div class="flex justify-between items-end">
+<div>
+<span class="text-secondary font-headline font-bold text-sm tracking-widest uppercase mb-2 block">Enterprise / Retail</span>
+<h3 class="font-headline text-3xl font-bold mb-3">TM Pick n Pay</h3>
+<p class="text-on-surface-variant max-w-lg mb-4 line-clamp-2">Full-scale digital transformation and inventory management system for major regional retail leader.</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] uppercase font-bold tracking-widest rounded-sm">React</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] uppercase font-bold tracking-widest rounded-sm">Node.js</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] uppercase font-bold tracking-widest rounded-sm">PostgreSQL</span>
+</div>
+</div>
+<div class="flex gap-4 mb-1">
+<a class="w-12 h-12 flex items-center justify-center rounded-xl bg-primary text-on-primary hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined">launch</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Project 2: Taxcul App with AI (Medium) -->
+<article class="md:col-span-4 group glass-card rounded-full flex flex-col transition-all hover:shadow-[0_0_40px_rgba(105,246,184,0.08)]">
+<div class="relative h-64 overflow-hidden rounded-full">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="abstract 3D visualization of financial data nodes and glowing neural network connections in deep blue space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBJ2xVGELJysYtEoaLWQ73Zw_OSXhHuBIc-xS0JAPm37kELh6fSwxXnQFOe4bzz8gd9LzgzCo2M03KjrAjCSVJKszZSJNEGg8h06S8VfI_fRg3bvgh-fFpCfYba6aGjWqfGURoBCdP1McYxmlEQShAYbvtwgdPS-23BCNa5Srw0JgjLNOgY275tzsdXxVSbzJPRsHF3dWWjQgDUq4DalcVgZgw-D6e3FouwZV_vsNRDdG-xocBvU5yOGNa6ZKtthcoyvcbI7qyW-bg"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-container-lowest/80"></div>
+</div>
+<div class="p-8">
+<span class="text-secondary font-headline font-bold text-xs tracking-widest uppercase mb-2 block">Fintech / AI</span>
+<h3 class="font-headline text-2xl font-bold mb-2">Taxcul App with AI</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Intelligent tax calculation engine utilizing NLP to parse financial documents and automate compliance.</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-primary text-lg">psychology</span>
+<span class="material-symbols-outlined text-primary text-lg">account_balance</span>
+</div>
+<a class="text-secondary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">arrow_forward_ios</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Project 3: NLP Patient Referral (Medium) -->
+<article class="md:col-span-4 group glass-card rounded-full flex flex-col transition-all hover:shadow-[0_0_40px_rgba(0,229,255,0.08)]">
+<div class="relative h-64 overflow-hidden rounded-full">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="blurred medical background with a glowing DNA helix hologram and abstract medical symbols in soft cyan and teal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBye_oNiABNJvihL-Q4OAVsCVUQw7yGITNKFP7La4TzGraCF6jWPFTzMJYeON7jFUvKQt9JPa-nVuqQmFoRhSzE_Hay48leBEb65FR6iXD-6PhM_at-D4zVzeMWBofGM57Xe-dm1oxgVFz-Zy9Zs4_ZKvjwHH5sj0MgyW7wcWJl5dCEh_rap53M4-JHxKwNCXuMIj4anQFDUP_VmNcj5BO312TseGxdEFohn03Kcp-vYzw3gYU_5pbuMkZUep6f9xPJAFoG1DuRDSjr"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-container-lowest/80"></div>
+</div>
+<div class="p-8">
+<span class="text-secondary font-headline font-bold text-xs tracking-widest uppercase mb-2 block">Healthtech</span>
+<h3 class="font-headline text-2xl font-bold mb-2">NLP Patient Referral</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Streamlining healthcare logistics using natural language processing to match patients with specialists.</p>
+<div class="flex items-center justify-between">
+<div class="text-xs font-bold text-primary-dim tracking-tighter">PHASE 2 DEPLOYED</div>
+<a class="p-2 rounded-lg bg-surface-container-highest text-on-surface-variant hover:text-primary" href="#">
+<span class="material-symbols-outlined text-xl">code</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Project 4: AFINET Customer Portal (Large) -->
+<article class="md:col-span-8 group relative overflow-hidden glass-card rounded-full p-1 transition-all hover:shadow-[0_0_40px_rgba(112,170,255,0.08)]">
+<div class="relative h-96 overflow-hidden rounded-full">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="clean sleek dashboard interface showing complex network analytics with glowing neon blue lines on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA46cJPji7XkHi15rkU7qylNVW1uBZYrorTFXSyX9deBYi-Eh-h-a1h9BWopv2gVS6W6y8PxV7iYYdqrbC79V4RGYbiTxss6UpFNvJpXI4KQu9dDBhx050peKX2t9J9FpuXGQJw32WuIodDaUQ4WpiOJeeHcRO_jQGqlYXeku0eu6aUbHRbxfS3pD8DdJqvoEfqxwSTcw4UgKpBp2EisoEcffrzvoH2jrBHmceGvFXqRCmxJfQ9ikrB4IT4Db9P3m6BpErPMGFtiytE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent opacity-90"></div>
+<div class="absolute bottom-8 left-8 right-8">
+<div class="flex justify-between items-end">
+<div>
+<span class="text-secondary font-headline font-bold text-sm tracking-widest uppercase mb-2 block">Telecommunications</span>
+<h3 class="font-headline text-3xl font-bold mb-3">AFINET Customer Portal</h3>
+<p class="text-on-surface-variant max-w-xl mb-4">A high-performance self-service portal handling thousands of concurrent users for network management.</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] uppercase font-bold rounded-sm">Angular</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] uppercase font-bold rounded-sm">Go</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] uppercase font-bold rounded-sm">Redis</span>
+</div>
+</div>
+<div class="flex gap-4">
+<a class="w-12 h-12 flex items-center justify-center rounded-xl bg-surface-container-highest text-on-surface border border-outline-variant/20 hover:border-primary transition-all" href="#">
+<span class="material-symbols-outlined text-xl">hub</span>
+</a>
+<a class="w-12 h-12 flex items-center justify-center rounded-xl bg-primary text-on-primary" href="#">
+<span class="material-symbols-outlined">visibility</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Additional Grid Items (Placeholder/Personal Projects) -->
+<article class="md:col-span-3 group glass-card rounded-full p-6 transition-all hover:translate-y-[-4px]">
+<div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 text-secondary">
+<span class="material-symbols-outlined">monitoring</span>
+</div>
+<h4 class="font-headline font-bold text-lg mb-2">CryptoPulse</h4>
+<p class="text-on-surface-variant text-xs mb-4">Real-time market sentiment analysis using Twitter API and BERT.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant/10 flex justify-between">
+<span class="text-[10px] font-bold text-outline uppercase tracking-widest">Personal</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">link</span>
+</div>
+</article>
+<article class="md:col-span-3 group glass-card rounded-full p-6 transition-all hover:translate-y-[-4px]">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined">auto_graph</span>
+</div>
+<h4 class="font-headline font-bold text-lg mb-2">FleetFlow</h4>
+<p class="text-on-surface-variant text-xs mb-4">Logistics routing algorithm optimized for minimal carbon footprint.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant/10 flex justify-between">
+<span class="text-[10px] font-bold text-outline uppercase tracking-widest">Work</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">link</span>
+</div>
+</article>
+<article class="md:col-span-3 group glass-card rounded-full p-6 transition-all hover:translate-y-[-4px]">
+<div class="w-12 h-12 bg-tertiary/10 rounded-lg flex items-center justify-center mb-6 text-tertiary">
+<span class="material-symbols-outlined">dns</span>
+</div>
+<h4 class="font-headline font-bold text-lg mb-2">OrbitalDB</h4>
+<p class="text-on-surface-variant text-xs mb-4">Distributed KV store experiment with custom consensus protocol.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant/10 flex justify-between">
+<span class="text-[10px] font-bold text-outline uppercase tracking-widest">Personal</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">link</span>
+</div>
+</article>
+<article class="md:col-span-3 group glass-card rounded-full p-6 transition-all hover:translate-y-[-4px]">
+<div class="w-12 h-12 bg-error/10 rounded-lg flex items-center justify-center mb-6 text-error">
+<span class="material-symbols-outlined">security</span>
+</div>
+<h4 class="font-headline font-bold text-lg mb-2">Sentinel Shield</h4>
+<p class="text-on-surface-variant text-xs mb-4">Zero-trust architecture framework for containerized microservices.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant/10 flex justify-between">
+<span class="text-[10px] font-bold text-outline uppercase tracking-widest">Research</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">link</span>
+</div>
+</article>
+</div>
+<!-- Experience Timeline Anchor (Sub-section) -->
+<section class="mt-32 mb-16">
+<div class="flex items-center gap-8 mb-12">
+<h2 class="font-headline text-3xl font-bold text-secondary">The Trajectory</h2>
+<div class="h-[1px] flex-1 bg-outline-variant/20"></div>
+</div>
+<div class="space-y-12">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+<div class="md:col-span-3 text-right">
+<span class="font-headline font-bold text-primary tracking-tighter">2021 — PRESENT</span>
+</div>
+<div class="md:col-span-1 flex justify-center relative">
+<div class="w-[2px] h-full bg-outline-variant/20 border-dashed absolute top-0"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary shadow-[0_0_10px_rgba(112,170,255,0.8)] z-10 mt-1"></div>
+</div>
+<div class="md:col-span-8 pb-12">
+<h4 class="text-xl font-bold mb-1">Senior Systems Architect</h4>
+<p class="text-on-surface-variant leading-relaxed">Leading the migration of legacy monoliths to cloud-native serverless architectures across the AFINET ecosystem.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-4 bg-[#060e20] font-['Inter'] text-xs uppercase tracking-widest tonal-shift bg-[#091328]">
+<div class="text-[#a3aac4]">
+            © 2024 KINETIC LUMINALIST • ENGINEERED WITH LIGHT
+        </div>
+<div class="flex gap-8">
+<a class="text-[#a3aac4] hover:text-[#69f6b8] opacity-80 hover:opacity-100 transition-all" href="#">Github</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] opacity-80 hover:opacity-100 transition-all" href="#">LinkedIn</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] opacity-80 hover:opacity-100 transition-all" href="#">Source</a>
+</div>
+</footer>
+</body></html>

@@ -1,17 +1,8 @@
 import type { Metadata, Viewport } from 'next'
-import { Space_Grotesk } from 'next/font/google'
 import './globals.css'
-import { EpicCursor } from '@/components/ui/epic-cursor'
-import { SmoothScroll, MagneticElements, ParallaxElements, PageLoader } from '@/components/ui/page-transitions'
 import { Analytics } from "@vercel/analytics/next"
 import { StructuredData } from '@/components/ui/structured-data'
 import { getPersonSchema, getOrganizationSchema } from '@/lib/structured-data'
-
-const spaceGrotesk = Space_Grotesk({ 
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-space-grotesk',
-})
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -95,18 +86,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark">
       <head>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
         <StructuredData data={getPersonSchema()} />
         <StructuredData data={getOrganizationSchema()} />
       </head>
-      <body className={spaceGrotesk.className}>
-        <PageLoader />
-        <Analytics/>
-        <EpicCursor />
-        <SmoothScroll />
-        <MagneticElements />
-        <ParallaxElements />
+      <body>
+        <Analytics />
         {children}
       </body>
     </html>

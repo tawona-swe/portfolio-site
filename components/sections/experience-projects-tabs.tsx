@@ -1,280 +1,196 @@
 'use client'
 
-import { motion, AnimatePresence } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
 import { useState } from 'react'
-import { EyeIcon, CodeBracketIcon, BriefcaseIcon, RocketLaunchIcon } from '@heroicons/react/24/outline'
 import portfolioData from '@/data/portfolio.json'
 
+const expIcons: Record<string, string> = {
+  'Quatrohaus (Pvt) Ltd': 'groups',
+  'Huawei': 'analytics',
+  'Contessasoft (Pvt) Ltd': 'shopping_cart',
+  'Olimem Enterprise Solutions (Pvt) Ltd': 'account_balance',
+}
+
+const expBadges: Record<string, string> = {
+  'Quatrohaus (Pvt) Ltd': '100k+ Users',
+  'Huawei': 'Enterprise Data',
+  'Contessasoft (Pvt) Ltd': 'E-commerce',
+  'Olimem Enterprise Solutions (Pvt) Ltd': 'Gov Systems',
+}
+
 export function ExperienceProjectsTabs() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
-  const [activeTab, setActiveTab] = useState<'experience' | 'projects'>('projects')
-  const [viewAllProjects, setViewAllProjects] = useState(false)
+  const [viewAll, setViewAll] = useState(false)
+  const displayed = viewAll ? portfolioData.projects : portfolioData.projects.slice(0, 6)
 
   return (
-    <section id="work" className="relative py-20 bg-foreground/5">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          {/* Section Header */}
-          <div className="text-center mb-12">
-            <motion.h2
-              className="text-4xl sm:text-5xl font-bold mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              My <span className="gradient-text">Work</span>
-            </motion.h2>
-            <motion.div
-              className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"
-              initial={{ scaleX: 0 }}
-              animate={inView ? { scaleX: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            />
-          </div>
+    <>
+      {/* Experience */}
+      <section id="experience" className="py-28 px-8 md:px-20 bg-surface-container-low">
+        <div className="mb-20">
+          <p className="text-secondary font-headline font-bold uppercase tracking-[0.2em] text-sm mb-4">Professional Path</p>
+          <h1 className="text-on-surface font-headline text-5xl md:text-6xl font-black leading-tight tracking-tighter">
+            Building Digital <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container">Architectures.</span>
+          </h1>
+        </div>
 
-          {/* Tabs */}
-          <div className="flex justify-center gap-4 mb-12">
-            <motion.button
-              onClick={() => setActiveTab('experience')}
-              className={`px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center gap-2 ${
-                activeTab === 'experience'
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/25'
-                  : 'bg-white/5 text-gray-400 hover:bg-white/10'
-              }`}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <BriefcaseIcon className="w-5 h-5" />
-              Experience
-            </motion.button>
-            <motion.button
-              onClick={() => setActiveTab('projects')}
-              className={`px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center gap-2 ${
-                activeTab === 'projects'
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/25'
-                  : 'bg-white/5 text-gray-400 hover:bg-white/10'
-              }`}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <RocketLaunchIcon className="w-5 h-5" />
-              Projects
-            </motion.button>
-          </div>
-
-          {/* Content */}
-          <AnimatePresence mode="wait">
-            {activeTab === 'experience' ? (
-              <motion.div
-                key="experience"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 50 }}
-                transition={{ duration: 0.5 }}
-                className="max-w-4xl mx-auto space-y-6"
-              >
-                {portfolioData.experiences.map((exp, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ scale: 1.02, x: 10 }}
-                    className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-blue-400/50 transition-all duration-300"
-                  >
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
-                      <div>
-                        <h3 className="text-xl font-semibold text-white mb-1">
-                          {exp.position}
-                        </h3>
-                        <p className="text-blue-300 font-medium">{exp.company}</p>
-                      </div>
-                      <span className="text-sm text-gray-400 whitespace-nowrap">
-                        {exp.duration}
-                      </span>
-                    </div>
-                    <p className="text-gray-400 mb-4">{exp.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-3 py-1 bg-blue-500/10 text-blue-300 rounded-lg text-sm"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            ) : (
-              <motion.div
-                key="projects"
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.5 }}
-                className="max-w-6xl mx-auto"
-              >
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {(viewAllProjects ? portfolioData.projects : portfolioData.projects.slice(0, 6)).map((project, index) => {
-                    const colors = [
-                      { from: 'from-blue-500/10', to: 'to-purple-500/10', border: 'border-blue-400/30' },
-                      { from: 'from-purple-500/10', to: 'to-pink-500/10', border: 'border-purple-400/30' },
-                      { from: 'from-cyan-500/10', to: 'to-blue-500/10', border: 'border-cyan-400/30' },
-                      { from: 'from-violet-500/10', to: 'to-purple-500/10', border: 'border-violet-400/30' },
-                      { from: 'from-indigo-500/10', to: 'to-blue-500/10', border: 'border-indigo-400/30' },
-                      { from: 'from-fuchsia-500/10', to: 'to-pink-500/10', border: 'border-fuchsia-400/30' },
-                    ]
-                    const color = colors[index % colors.length]
-
-                    return (
-                      <motion.div
-                        key={project.id}
-                        initial={{ opacity: 0, y: 100, rotate: -5 }}
-                        whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-                        viewport={{ amount: 0.3, once: true }}
-                        transition={{ 
-                          type: "spring",
-                          bounce: 0.3,
-                          duration: 0.8,
-                          delay: (index % 3) * 0.1
-                        }}
-                        whileHover={{ 
-                          y: -10,
-                          rotate: 0,
-                          scale: 1.02,
-                          transition: { duration: 0.3 }
-                        }}
-                        className={`group relative bg-gradient-to-br ${color.from} ${color.to} backdrop-blur-sm rounded-2xl overflow-hidden border ${color.border} hover:border-blue-400/50 transition-all duration-300 shadow-xl`}
-                      >
-                        {/* Glow effect */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/10 group-hover:to-purple-500/10 transition-all duration-300" />
-                        
-                        {/* Image */}
-                        <div className="relative overflow-hidden h-48">
-                          <motion.img
-                            src={project.image}
-                            alt={project.imageAlt || project.title}
-                            className="w-full h-full object-cover"
-                            whileHover={{ scale: 1.1 }}
-                            transition={{ duration: 0.4 }}
-                          />
-                          
-                          {/* Type badge */}
-                          {project.type && (
-                            <motion.div
-                              initial={{ scale: 0, rotate: -180 }}
-                              whileInView={{ scale: 1, rotate: 0 }}
-                              transition={{ delay: 0.3, type: "spring" }}
-                              className={`absolute top-4 left-4 px-3 py-1 text-white text-xs font-bold rounded-full shadow-lg ${
-                                project.type === 'work' 
-                                  ? 'bg-gradient-to-r from-blue-500 to-blue-600' 
-                                  : 'bg-gradient-to-r from-purple-500 to-purple-600'
-                              }`}
-                            >
-                              {project.type === 'work' ? '💼 Work' : '🚀 Personal'}
-                            </motion.div>
-                          )}
-                          
-                          {/* Overlay with buttons */}
-                          <motion.div
-                            className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4"
-                            initial={{ opacity: 0 }}
-                            whileHover={{ opacity: 1 }}
-                          >
-                            <motion.a
-                              href={project.demo}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="p-3 bg-blue-500 hover:bg-blue-600 rounded-full text-white transition-colors shadow-lg"
-                              whileHover={{ scale: 1.2, rotate: 5 }}
-                              whileTap={{ scale: 0.9 }}
-                            >
-                              <EyeIcon className="w-5 h-5" />
-                            </motion.a>
-                            <motion.a
-                              href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="p-3 bg-white/20 hover:bg-white/30 rounded-full text-white transition-colors shadow-lg backdrop-blur-sm"
-                              whileHover={{ scale: 1.2, rotate: -5 }}
-                              whileTap={{ scale: 0.9 }}
-                            >
-                              <CodeBracketIcon className="w-5 h-5" />
-                            </motion.a>
-                          </motion.div>
-                        </div>
-                        
-                        {/* Content */}
-                        <div className="relative p-6">
-                          <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
-                            {project.title}
-                          </h3>
-                          <p className="text-gray-400 text-sm mb-4 line-clamp-2">
-                            {project.description}
-                          </p>
-                          
-                          {/* Technologies */}
-                          <div className="flex flex-wrap gap-2">
-                            {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                              <motion.span
-                                key={techIndex}
-                                initial={{ scale: 0 }}
-                                whileInView={{ scale: 1 }}
-                                transition={{ delay: 0.5 + techIndex * 0.1, type: "spring" }}
-                                className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-lg text-xs font-medium border border-blue-400/30"
-                              >
-                                {tech}
-                              </motion.span>
-                            ))}
-                            {project.technologies.length > 3 && (
-                              <motion.span
-                                initial={{ scale: 0 }}
-                                whileInView={{ scale: 1 }}
-                                transition={{ delay: 0.8, type: "spring" }}
-                                className="px-2 py-1 bg-gray-500/20 text-gray-400 rounded-lg text-xs font-medium border border-gray-400/30"
-                              >
-                                +{project.technologies.length - 3}
-                              </motion.span>
-                            )}
-                          </div>
-
-                          {/* Decorative corner accent */}
-                          <div className="absolute bottom-2 right-2 w-12 h-12 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-xl" />
-                        </div>
-                      </motion.div>
-                    )
-                  })}
-                </div>
-
-                {/* View All Projects Button */}
-                {portfolioData.projects.length > 6 && (
-                  <div className="text-center mt-12">
-                    <motion.button
-                      onClick={() => setViewAllProjects(!viewAllProjects)}
-                      className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-lg font-medium transition-all duration-300 shadow-lg"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {viewAllProjects ? 'Show Less Projects' : 'View All Projects'}
-                    </motion.button>
-                  </div>
+        <div className="relative max-w-5xl">
+          {portfolioData.experiences.map((exp, index) => (
+            <div key={index} className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-14 mb-20 group">
+              <div className="md:text-right pt-2">
+                <span className="text-on-surface-variant font-label text-xs uppercase tracking-widest font-bold">{exp.duration}</span>
+              </div>
+              <div className="relative pl-8 md:pl-0">
+                <div className={`absolute -left-3 md:-left-[4.1rem] top-3 w-3 h-3 rounded-full ring-4 ring-primary/20 ${index === 0 ? 'bg-tertiary animate-pulse' : 'bg-tertiary opacity-60'}`} />
+                {index < portfolioData.experiences.length - 1 && (
+                  <div className="absolute -left-[0.65rem] md:-left-[3.75rem] top-8 bottom-[-5rem] w-[1px] timeline-dashed opacity-20" />
                 )}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      </div>
-    </section>
+                <div className="glass-card p-8 rounded-xl border border-outline-variant/15 transition-all duration-300 hover:translate-x-2 neon-glow">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                    <div>
+                      <h3 className="text-on-surface font-headline text-2xl font-bold">{exp.position}</h3>
+                      <p className="text-primary font-body font-medium">{exp.company}</p>
+                    </div>
+                    <div className="bg-surface-container-highest px-4 py-2 rounded-full flex items-center gap-2 shrink-0">
+                      <span className="material-symbols-outlined text-secondary text-lg">{expIcons[exp.company] ?? 'work'}</span>
+                      <span className="text-on-surface-variant text-xs font-bold">{expBadges[exp.company] ?? ''}</span>
+                    </div>
+                  </div>
+                  <p className="text-on-surface/80 font-body mb-8 leading-relaxed max-w-2xl">{exp.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {exp.technologies.map((tech: string, i: number) => (
+                      <span key={i} className="bg-surface-container-high text-on-surface-variant text-xs px-3 py-1 rounded-sm font-bold uppercase tracking-tighter">{tech}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl">
+          {[
+            { icon: 'terminal', color: 'text-primary', title: 'Architecture', desc: 'System design for high-load platforms.' },
+            { icon: 'query_stats', color: 'text-secondary', title: 'Data Insights', desc: 'Turning complex data into intelligence.' },
+            { icon: 'devices', color: 'text-tertiary', title: 'User Focus', desc: 'UX-driven development for final users.' },
+          ].map((s, i) => (
+            <div key={i} className="bg-surface-container p-8 rounded-2xl border border-outline-variant/10">
+              <span className={`material-symbols-outlined ${s.color} text-3xl mb-4 block`}>{s.icon}</span>
+              <h4 className="text-on-surface font-headline font-bold text-xl mb-1">{s.title}</h4>
+              <p className="text-on-surface-variant font-body text-sm">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="py-28 px-8 md:px-20">
+        <div className="max-w-7xl mx-auto">
+          <section className="mb-20">
+            <h1 className="font-headline font-bold text-5xl md:text-7xl tracking-tighter mb-4 text-on-surface">
+              Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Works</span>
+            </h1>
+            <p className="text-on-surface-variant max-w-2xl text-lg md:text-xl font-light">
+              A showcase of architecting high-performance digital ecosystems, from large-scale e-commerce to AI-driven healthcare solutions.
+            </p>
+          </section>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+            {displayed.map((project, index) => {
+              const isFeatured = index === 0
+              const isNarrow = index === 1
+              const isHalf = index >= 2
+              const colSpan = isFeatured ? 'md:col-span-8' : isNarrow ? 'md:col-span-4' : 'md:col-span-6'
+              return (
+                <div key={project.id} className={`${colSpan} group`}>
+                  {isHalf ? (
+                    <div className="glass-card rounded-xl overflow-hidden border border-outline-variant/15 transition-all duration-300 hover:border-primary/30 neon-glow h-full">
+                      <div className="grid grid-cols-1 md:grid-cols-2 h-full">
+                        <div className="h-64 md:h-full relative overflow-hidden">
+                          <img src={project.image} alt={project.imageAlt || project.title} className="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105" />
+                        </div>
+                        <div className="p-8 flex flex-col justify-between">
+                          <div>
+                            <span className={`text-[10px] font-bold tracking-[0.2em] px-3 py-1 rounded-full uppercase mb-4 inline-block ${project.type === 'work' ? 'bg-primary/10 text-primary' : 'bg-secondary/10 text-secondary'}`}>
+                              {project.type === 'work' ? 'Work' : 'Personal'}
+                            </span>
+                            <h2 className="font-headline text-2xl font-bold text-on-surface mb-3 leading-tight">{project.title}</h2>
+                            <p className="text-on-surface-variant text-sm leading-relaxed mb-6 line-clamp-3">{project.description}</p>
+                            <div className="flex flex-wrap gap-2 mb-6">
+                              {project.technologies.slice(0, 3).map((tech: string, i: number) => (
+                                <span key={i} className="bg-surface-container-highest px-3 py-1 rounded-lg text-xs font-label text-on-surface-variant">{tech}</span>
+                              ))}
+                            </div>
+                          </div>
+                          <div className="flex gap-3">
+                            <a href={project.demo} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-primary text-on-primary rounded-xl text-xs font-bold tracking-widest">DEMO</a>
+                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="px-4 py-2 border border-outline-variant/30 text-on-surface-variant rounded-xl text-xs font-bold tracking-widest hover:border-primary/50 transition-colors">SOURCE</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="glass-card rounded-xl overflow-hidden border border-outline-variant/15 h-full flex flex-col transition-all duration-300 hover:border-primary/30 neon-glow">
+                      <div className={`relative overflow-hidden ${isFeatured ? 'h-64 md:h-80' : 'h-48'}`}>
+                        <img src={project.image} alt={project.imageAlt || project.title} className="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#091328] to-transparent" />
+                        {isFeatured && (
+                          <div className="absolute bottom-6 left-6">
+                            <span className="bg-secondary/10 text-secondary text-[10px] font-bold tracking-[0.2em] px-3 py-1 rounded-full uppercase mb-2 inline-block">
+                              {project.type === 'work' ? 'Work' : 'Personal'}
+                            </span>
+                            <h2 className="font-headline text-3xl font-bold text-on-surface leading-tight">{project.title}</h2>
+                          </div>
+                        )}
+                      </div>
+                      <div className="p-8 flex-grow flex flex-col justify-between">
+                        {!isFeatured && (
+                          <>
+                            <span className={`text-[10px] font-bold tracking-[0.2em] px-3 py-1 rounded-full uppercase mb-4 self-start ${project.type === 'work' ? 'bg-primary/10 text-primary' : 'bg-tertiary/10 text-tertiary'}`}>
+                              {project.type === 'work' ? 'Work' : 'Personal'}
+                            </span>
+                            <h2 className="font-headline text-2xl font-bold text-on-surface mb-3">{project.title}</h2>
+                          </>
+                        )}
+                        <p className="text-on-surface-variant text-sm leading-relaxed mb-6 line-clamp-3">{project.description}</p>
+                        <div className="flex flex-wrap gap-2 mb-auto pb-6">
+                          {project.technologies.slice(0, 3).map((tech: string, i: number) => (
+                            <span key={i} className="bg-surface-container-highest px-3 py-1 rounded-lg text-xs font-label text-on-surface-variant">{tech}</span>
+                          ))}
+                        </div>
+                        <div className="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+                          <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary text-xs font-bold tracking-widest hover:gap-3 transition-all">
+                            {isFeatured ? 'VIEW CASE STUDY' : 'VISIT SITE'}
+                            <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                          </a>
+                          <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-on-surface-variant/50 hover:text-on-surface transition-colors">
+                            <span className="material-symbols-outlined">terminal</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+
+          {portfolioData.projects.length > 6 && (
+            <div className="text-center mt-16">
+              <button onClick={() => setViewAll(!viewAll)} className="px-8 py-4 border border-outline-variant/30 text-on-surface rounded-xl font-headline font-bold hover:bg-surface-container-high hover:border-primary/30 transition-all">
+                {viewAll ? 'Show Less' : 'View All Projects'}
+              </button>
+            </div>
+          )}
+
+          <section className="mt-32 mb-8 text-center">
+            <h3 className="font-headline text-2xl font-bold mb-4">Have a project in mind?</h3>
+            <p className="text-on-surface-variant mb-8 max-w-md mx-auto">I am currently open to new collaborations and high-impact engineering opportunities.</p>
+            <a href="#contact" className="inline-flex items-center gap-3 text-secondary font-headline font-bold text-lg hover:gap-5 transition-all">
+              Lets talk <span className="material-symbols-outlined">alternate_email</span>
+            </a>
+          </section>
+        </div>
+      </section>
+    </>
   )
 }

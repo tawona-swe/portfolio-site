@@ -1,220 +1,176 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import { TechIcon } from '@/components/ui/skill-icons'
 import portfolioData from '@/data/portfolio.json'
-import { useState, useRef } from 'react'
+
+// Map skill names to their icon filenames in /public/icons/
+const skillIconMap: Record<string, string> = {
+  'JavaScript/TypeScript': 'TypeScript.svg',
+  'React': 'React.svg',
+  'Next.js': 'Next.js.svg',
+  'React Native': 'React.svg',
+  'HTML/CSS': 'Tailwind-CSS.svg',
+  'PHP/Laravel': 'Laravel.svg',
+  'Python/Django': 'Python.svg',
+  'Java/Spring Boot': 'Spring.svg',
+  'RESTful APIs': 'Node.js.svg',
+  'Node.js': 'Node.js.svg',
+  'MySQL': 'MySQL.svg',
+  'PostgreSQL': 'MongoDB.svg',
+  'MongoDB': 'MongoDB.svg',
+  'Docker': 'Docker.svg',
+  'AWS': 'AWS.svg',
+}
+
+function SkillIcon({ name }: { name: string }) {
+  const icon = skillIconMap[name]
+  if (!icon) return null
+  return (
+    <img
+      src={`/icons/${icon}`}
+      alt={name}
+      className="w-5 h-5 object-contain"
+    />
+  )
+}
 
 export function AboutSkillsCombined() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const sectionRef = useRef<HTMLDivElement>(null)
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (sectionRef.current) {
-      const rect = sectionRef.current.getBoundingClientRect()
-      const x = (e.clientX - rect.left) / rect.width
-      const y = (e.clientY - rect.top) / rect.height
-      setMousePosition({ x, y })
-    }
-  }
+  const { about, skills, personal } = portfolioData
 
   return (
-    <section 
-      id="about" 
-      ref={sectionRef}
-      onMouseMove={handleMouseMove}
-      className="relative py-20 overflow-hidden"
-    >
-      {/* Animated background gradient */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent"
-        animate={{
-          opacity: [0.3, 0.6, 0.3],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-
-      {/* Mouse-following gradient orb */}
-      <motion.div
-        className="absolute w-96 h-96 rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)',
-          filter: 'blur(40px)',
-        }}
-        animate={{
-          x: mousePosition.x * 100 - 192,
-          y: mousePosition.y * 100 - 192,
-        }}
-        transition={{ type: "spring", stiffness: 50, damping: 20 }}
-      />
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          {/* Section Header */}
-          <div className="text-center mb-12">
-            <motion.h2
-              className="text-4xl sm:text-5xl font-bold mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              About <span className="gradient-text">Me</span>
-            </motion.h2>
-            <motion.div
-              className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"
-              initial={{ scaleX: 0 }}
-              animate={inView ? { scaleX: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            />
+    <>
+      {/* About Section */}
+      <section id="about" className="py-28 px-8 md:px-20 bg-surface-container-low">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          {/* Left: photo */}
+          <div className="lg:col-span-5 space-y-12">
+            <h2 className="text-secondary font-headline text-3xl font-bold tracking-tight uppercase">Legacy &amp; Foundation</h2>
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-xl opacity-20 group-hover:opacity-40 blur transition duration-500" />
+              <div className="relative overflow-hidden rounded-xl bg-surface-container-highest aspect-[4/5]">
+                <img
+                  src={personal.avatar}
+                  alt={personal.name}
+                  className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                />
+              </div>
+            </div>
           </div>
 
-          {/* Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
-            
-            {/* Left: About */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="space-y-6"
-            >
-              <p className="text-gray-300 text-lg leading-relaxed">
-                {portfolioData.about.description}
-              </p>
+          {/* Right: content */}
+          <div className="lg:col-span-7 flex flex-col justify-center space-y-10">
+            <div className="space-y-6">
+              <h3 className="font-headline text-4xl font-bold text-on-surface leading-tight">Engineering Excellence at its Core.</h3>
+              <p className="text-on-surface-variant text-lg leading-relaxed max-w-2xl">{about.description}</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-8 rounded-xl bg-surface-container-high border border-outline-variant/10">
+                <span className="material-symbols-outlined text-primary text-4xl mb-4 block" style={{ fontVariationSettings: "'FILL' 1" }}>workspace_premium</span>
+                <h4 className="font-headline text-xl font-bold text-on-surface mb-2">BSc Hons. Software Engineering</h4>
+                <p className="text-sm text-on-surface-variant">First Class Honours degree with a focus on systems architecture and cloud scalability.</p>
+              </div>
+              <div className="p-8 rounded-xl bg-surface-container-high border border-outline-variant/10">
+                <span className="material-symbols-outlined text-secondary text-4xl mb-4 block" style={{ fontVariationSettings: "'FILL' 1" }}>stars</span>
+                <h4 className="font-headline text-xl font-bold text-on-surface mb-2">Most Consistent Undergraduate</h4>
+                <p className="text-sm text-on-surface-variant">Awarded for maintaining peak performance and architectural discipline throughout the tenure.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              {/* Highlights */}
-              <div className="space-y-3">
-                {portfolioData.about.highlights.slice(0, 4).map((highlight, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={inView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                    className="flex items-start gap-3 group"
-                  >
-                    <motion.div
-                      className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"
-                      whileHover={{ scale: 2 }}
-                    />
-                    <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                      {highlight}
-                    </p>
-                  </motion.div>
+      {/* Skills Section */}
+      <section id="skills" className="py-28 px-8 md:px-20">
+        <div className="mb-16">
+          <p className="text-secondary font-headline font-bold uppercase tracking-[0.2em] text-sm mb-4">Technical Proficiency</p>
+          <h2 className="text-on-surface font-headline text-5xl md:text-7xl font-bold tracking-tighter leading-none">
+            Mastering the{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container">Modern Stack</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          {/* Frontend - large */}
+          <div className="md:col-span-8 glass-card rounded-xl p-8 border border-outline-variant/15 neon-glow transition-all duration-300">
+            <div className="flex justify-between items-end mb-10">
+              <div>
+                <span className="material-symbols-outlined text-primary mb-2 text-3xl block">fluid</span>
+                <h3 className="text-2xl font-headline font-bold text-secondary">Frontend Engineering</h3>
+              </div>
+              <span className="text-on-surface-variant font-label text-xs uppercase tracking-widest">Client Side</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
+              {skills[0].items.map((skill, i) => (
+                <div key={i} className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                      <SkillIcon name={skill.name} />
+                      <span className="text-on-surface font-medium">{skill.name}</span>
+                    </div>
+                    <span className="text-xs font-label text-primary-dim">{skill.level}%</span>
+                  </div>
+                  <div className="w-full bg-surface-container-highest skill-track overflow-hidden">
+                    <div className="h-full bg-gradient-to-r from-secondary to-secondary-dim" style={{ width: `${skill.level}%` }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Backend - narrow */}
+          <div className="md:col-span-4 glass-card rounded-xl p-8 border border-outline-variant/15 neon-glow transition-all duration-300">
+            <div className="mb-10">
+              <span className="material-symbols-outlined text-tertiary mb-2 text-3xl block">database</span>
+              <h3 className="text-2xl font-headline font-bold text-secondary">Backend</h3>
+            </div>
+            <ul className="space-y-6">
+              {skills[1].items.map((skill, i) => (
+                <li key={i} className="flex items-center gap-4">
+                  <div className="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0">
+                    <SkillIcon name={skill.name} />
+                  </div>
+                  <div>
+                    <p className="text-on-surface font-medium">{skill.name}</p>
+                    <div className="w-full bg-surface-container-highest skill-track mt-1 overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-secondary to-secondary-dim" style={{ width: `${skill.level}%` }} />
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Infrastructure - full width */}
+          <div className="md:col-span-12 glass-card rounded-xl p-8 border border-outline-variant/15 neon-glow transition-all duration-300 bg-gradient-to-br from-[#141f38]/60 to-[#091328]/40">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+              <div>
+                <span className="material-symbols-outlined text-secondary mb-2 text-3xl block">settings_ethernet</span>
+                <h3 className="text-2xl font-headline font-bold text-secondary">Infrastructure &amp; Data</h3>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {skills[2].items.map((skill, i) => (
+                  <span key={i} className="flex items-center gap-2 px-4 py-2 bg-surface-container-highest rounded-full text-xs font-label border border-outline-variant/20">
+                    <SkillIcon name={skill.name} />
+                    {skill.name}
+                  </span>
                 ))}
               </div>
-            </motion.div>
-
-            {/* Right: Skills */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="space-y-8"
-            >
-              {portfolioData.skills.map((skillCategory, catIndex) => (
-                <motion.div
-                  key={skillCategory.category}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.6 + catIndex * 0.2 }}
-                >
-                  <h3 className="text-xl font-semibold text-blue-300 mb-4">
-                    {skillCategory.category}
-                  </h3>
-                  
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    {skillCategory.items.map((skill, skillIndex) => (
-                      <motion.div
-                        key={skill.name}
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={inView ? { opacity: 1, scale: 1 } : {}}
-                        transition={{
-                          duration: 0.5,
-                          delay: 0.8 + catIndex * 0.2 + skillIndex * 0.05,
-                          type: "spring",
-                          stiffness: 200
-                        }}
-                        whileHover={{ 
-                          scale: 1.15, 
-                          y: -8,
-                          rotate: Math.random() * 10 - 5,
-                          transition: { duration: 0.2 }
-                        }}
-                        className="relative group cursor-pointer"
-                        style={{
-                          transformStyle: 'preserve-3d',
-                        }}
-                      >
-                        {/* Glow effect on hover */}
-                        <motion.div
-                          className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-purple-500/0 rounded-xl blur-xl"
-                          whileHover={{
-                            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(168, 85, 247, 0.3) 100%)',
-                          }}
-                          transition={{ duration: 0.3 }}
-                        />
-                        
-                        <motion.div 
-                          className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:border-blue-400/50 transition-all duration-300"
-                          animate={{
-                            rotateY: (mousePosition.x - 0.5) * 10,
-                            rotateX: -(mousePosition.y - 0.5) * 10,
-                          }}
-                          transition={{ type: "spring", stiffness: 100, damping: 15 }}
-                        >
-                          <div className="flex items-center gap-3">
-                            <motion.div
-                              whileHover={{ rotate: 360, scale: 1.2 }}
-                              transition={{ duration: 0.5 }}
-                            >
-                              <TechIcon name={skill.name} className="w-8 h-8" />
-                            </motion.div>
-                            <div className="flex-1 min-w-0">
-                              <p className="text-sm font-medium text-gray-300 truncate group-hover:text-white transition-colors">
-                                {skill.name}
-                              </p>
-                              {/* Skill level bar */}
-                              <div className="mt-2 h-1 bg-gray-700 rounded-full overflow-hidden">
-                                <motion.div
-                                  className="h-full bg-gradient-to-r from-blue-400 to-purple-400"
-                                  initial={{ width: 0 }}
-                                  animate={inView ? { width: `${skill.level}%` } : {}}
-                                  whileHover={{ 
-                                    background: 'linear-gradient(to right, #60a5fa, #a855f7, #06b6d4)',
-                                  }}
-                                  transition={{
-                                    duration: 1,
-                                    delay: 1 + catIndex * 0.2 + skillIndex * 0.05,
-                                    ease: "easeOut"
-                                  }}
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </motion.div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { value: '100k+', label: 'Users Served' },
+                { value: '10+', label: 'Projects Shipped' },
+                { value: '99.9%', label: 'Uptime Record' },
+                { value: '1st', label: 'Class Honours' },
+              ].map((stat, i) => (
+                <div key={i} className="p-6 rounded-xl bg-surface-container-lowest/40 border border-outline-variant/10 text-center">
+                  <p className="text-3xl font-headline font-bold text-primary mb-1">{stat.value}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-on-surface-variant">{stat.label}</p>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   )
 }

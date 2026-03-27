@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-tertiary-container": "#001d3f",
+            "on-secondary-fixed": "#00452d",
+            "surface-tint": "#a1faff",
+            "on-error": "#490006",
+            "inverse-surface": "#faf8ff",
+            "on-primary-fixed-variant": "#006266",
+            "primary-fixed": "#00f4fe",
+            "on-secondary-container": "#e1ffec",
+            "on-primary-fixed": "#004346",
+            "on-surface": "#dee5ff",
+            "on-tertiary": "#002a55",
+            "inverse-primary": "#006a6e",
+            "tertiary-container": "#599cf9",
+            "surface-container-highest": "#192540",
+            "primary": "#a1faff",
+            "background": "#060e20",
+            "on-primary-container": "#00575b",
+            "on-background": "#dee5ff",
+            "on-surface-variant": "#a3aac4",
+            "on-primary": "#006165",
+            "primary-fixed-dim": "#00e5ee",
+            "surface-variant": "#192540",
+            "tertiary": "#70aaff",
+            "tertiary-fixed-dim": "#65a4ff",
+            "surface-dim": "#060e20",
+            "tertiary-dim": "#5c9ffc",
+            "surface-container": "#0f1930",
+            "inverse-on-surface": "#4d556b",
+            "primary-container": "#00f4fe",
+            "error": "#ff716c",
+            "on-tertiary-fixed-variant": "#003971",
+            "secondary-fixed": "#69f6b8",
+            "on-tertiary-fixed": "#001835",
+            "on-secondary": "#005a3c",
+            "secondary-container": "#006c49",
+            "secondary-fixed-dim": "#58e7ab",
+            "secondary-dim": "#58e7ab",
+            "outline": "#6d758c",
+            "primary-dim": "#00e5ee",
+            "error-container": "#9f0519",
+            "outline-variant": "#40485d",
+            "error-dim": "#d7383b",
+            "tertiary-fixed": "#80b2ff",
+            "surface": "#060e20",
+            "on-error-container": "#ffa8a3",
+            "surface-container-low": "#091328",
+            "surface-container-lowest": "#000000",
+            "surface-bright": "#1f2b49",
+            "secondary": "#69f6b8",
+            "surface-container-high": "#141f38",
+            "on-secondary-fixed-variant": "#006544"
+          },
+          fontFamily: {
+            "headline": ["Space Grotesk"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #060e20;
+      color: #dee5ff;
+      font-family: 'Inter', sans-serif;
+    }
+    .glass-card {
+      background: rgba(25, 37, 64, 0.6);
+      backdrop-filter: blur(12px);
+    }
+    .neon-glow:hover {
+      box-shadow: 0 0 15px rgba(0, 229, 238, 0.3);
+    }
+    .timeline-dashed {
+      background-image: linear-gradient(to bottom, #40485d 33%, rgba(255,255,255,0) 0%);
+      background-position: right;
+      background-size: 1px 12px;
+      background-repeat: repeat-y;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#060e20]/80 backdrop-blur-xl bg-gradient-to-b from-[#091328] to-transparent">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00E5FF]">terminal</span>
+<span class="text-xl font-black tracking-tighter text-[#00E5FF] font-['Space_Grotesk']">TAWONA</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#dee5ff]/70 font-['Space_Grotesk'] font-bold tracking-tight hover:text-[#69f6b8] transition-colors duration-200" href="#">Home</a>
+<a class="text-[#dee5ff]/70 font-['Space_Grotesk'] font-bold tracking-tight hover:text-[#69f6b8] transition-colors duration-200" href="#">Projects</a>
+<a class="text-[#00E5FF] font-['Space_Grotesk'] font-bold tracking-tight hover:text-[#69f6b8] transition-colors duration-200" href="#">Experience</a>
+<a class="text-[#dee5ff]/70 font-['Space_Grotesk'] font-bold tracking-tight hover:text-[#69f6b8] transition-colors duration-200" href="#">Skills</a>
+</div>
+<button class="bg-[#00E5FF] text-[#006165] px-4 py-1.5 rounded-lg font-bold text-sm tracking-tight active:scale-95 transition-transform">RESUME</button>
+</div>
+</header>
+<main class="pt-32 pb-32 px-6 max-w-5xl mx-auto">
+<!-- Hero Header -->
+<div class="mb-24">
+<h2 class="text-secondary font-headline text-[1.75rem] font-bold uppercase tracking-[0.2em] mb-4">Professional Path</h2>
+<h1 class="text-on-surface font-headline text-[3.5rem] font-black leading-tight tracking-tighter">
+        Building Digital <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container">Architectures.</span>
+</h1>
+</div>
+<!-- Experience Timeline Section -->
+<div class="relative">
+<!-- Experience 1: Quatrohaus -->
+<div class="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-14 mb-20 group">
+<div class="md:text-right pt-2">
+<span class="text-on-surface-variant font-label text-[0.75rem] uppercase tracking-widest font-bold">Jan 2022 — Present</span>
+</div>
+<div class="relative pl-8 md:pl-0">
+<!-- Timeline Node -->
+<div class="absolute -left-3 md:-left-[4.1rem] top-3 w-3 h-3 bg-tertiary rounded-full ring-4 ring-primary/20 animate-pulse"></div>
+<!-- Line Decor -->
+<div class="absolute -left-[0.65rem] md:-left-[3.75rem] top-8 bottom-[-5rem] w-[1px] timeline-dashed opacity-20"></div>
+<div class="glass-card p-8 rounded-xl border border-outline-variant/15 transition-all duration-300 hover:translate-x-2 neon-glow">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<h3 class="text-on-surface font-headline text-2xl font-bold">Full Stack Developer</h3>
+<p class="text-primary font-body font-medium">Quatrohaus (Pvt) Ltd</p>
+</div>
+<div class="bg-surface-container-highest px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">groups</span>
+<span class="text-on-surface-variant text-[0.75rem] font-bold">100k+ Users</span>
+</div>
+</div>
+<p class="text-on-surface/80 font-body mb-8 leading-relaxed max-w-2xl">
+              Lead development for the TM PnP platform, managing high-traffic architecture and full-stack implementation. Focused on scalability and seamless user experiences for a massive enterprise user base.
+            </p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high text-on-surface-variant text-[0.75rem] px-3 py-1 rounded-sm font-bold uppercase tracking-tighter">React</span>
+<span class="bg-surface-container-high text-on-surface-variant text-[0.75rem] px-3 py-1 rounded-sm font-bold uppercase tracking-tighter">Node.js</span>
+<span class="bg-surface-container-high text-on-surface-variant text-[0.75rem] px-3 py-1 rounded-sm font-bold uppercase tracking-tighter">PostgreSQL</span>
+<span class="bg-surface-container-high text-on-surface-variant text-[0.75rem] px-3 py-1 rounded-sm font-bold uppercase tracking-tighter">Docker</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Experience 2: Huawei -->
+<div class="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-14 mb-20 group">
+<div class="md:text-right pt-2">
+<span class="text-on-surface-variant font-label text-[0.75rem] uppercase tracking-widest font-bold">2021 — 2022</span>
+</div>
+<div class="relative pl-8 md:pl-0">
+<div class="absolute -left-3 md:-left-[4.1rem] top-3 w-3 h-3 bg-tertiary rounded-full opacity-60"></div>
+<div class="absolute -left-[0.65rem] md:-left-[3.75rem] top-8 bottom-[-5rem] w-[1px] timeline-dashed opacity-20"></div>
+<div class="glass-card p-8 rounded-xl border border-outline-variant/15 transition-all duration-300 hover:translate-x-2">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<h3 class="text-on-surface font-headline text-2xl font-bold">Data Analyst</h3>
+<p class="text-primary font-body font-medium">Huawei</p>
+</div>
+<div class="bg-surface-container-highest px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">analytics</span>
+<span class="text-on-surface-variant text-[0.75rem] font-bold">Enterprise Data</span>
+</div>
+</div>
+<p class="text-on-surface/80 font-body mb-8 leading-relaxed max-w-2xl">
+              Engineered complex SQL development and data visualization workflows using Power BI. Transformed raw enterprise data into actionable insights for high-level decision-making processes.
+            </p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high text-on-surface-variant text-[0.75rem] px-3 py-1 rounded-sm font-bold uppercase tracking-tighter">SQL</span>
+<span class="bg-surface-container-high text-on-surface-variant text-[0.75rem] px-3 py-1 rounded-sm font-bold uppercase tracking-tighter">Power BI</span>
+<span class="bg-surface-container-high text-on-surface-variant text-[0.75rem] px-3 py-1 rounded-sm font-bold uppercase tracking-tighter">Python</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Experience 3: Contessasoft -->
+<div class="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-14 mb-20 group">
+<div class="md:text-right pt-2">
+<span class="text-on-surface-variant font-label text-[0.75rem] uppercase tracking-widest font-bold">2020 — 2021</span>
+</div>
+<div class="relative pl-8 md:pl-0">
+<div class="absolute -left-3 md:-left-[4.1rem] top-3 w-3 h-3 bg-tertiary rounded-full opacity-60"></div>
+<div class="absolute -left-[0.65rem] md:-left-[3.75rem] top-8 bottom-[-5rem] w-[1px] timeline-dashed opacity-20"></div>
+<div class="glass-card p-8 rounded-xl border border-outline-variant/15 transition-all duration-300 hover:translate-x-2">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<h3 class="text-on-surface font-headline text-2xl font-bold">Software Developer</h3>
+<p class="text-primary font-body font-medium">Contessasoft (Pvt) Ltd</p>
+</div>
+<div class="bg-surface-container-highest px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">shopping_cart</span>
+<span class="text-on-surface-variant text-[0.75rem] font-bold">Delivery UI</span>
+</div>
+</div>
+<p class="text-on-surface/80 font-body mb-8 leading-relaxed max-w-2xl">
+              Developed end-to-end e-commerce delivery solutions with a heavy focus on UI/UX precision. Optimized front-end performance and ensured mobile-first responsiveness across the platform.
+            </p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high text-on-surface-variant text-[0.75rem] px-3 py-1 rounded-sm font-bold uppercase tracking-tighter">Vue.js</span>
+<span class="bg-surface-container-high text-on-surface-variant text-[0.75rem] px-3 py-1 rounded-sm font-bold uppercase tracking-tighter">Figma</span>
+<span class="bg-surface-container-high text-on-surface-variant text-[0.75rem] px-3 py-1 rounded-sm font-bold uppercase tracking-tighter">Laravel</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Experience 4: Olimem -->
+<div class="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-14 group">
+<div class="md:text-right pt-2">
+<span class="text-on-surface-variant font-label text-[0.75rem] uppercase tracking-widest font-bold">2019 — 2020</span>
+</div>
+<div class="relative pl-8 md:pl-0">
+<div class="absolute -left-3 md:-left-[4.1rem] top-3 w-3 h-3 bg-tertiary rounded-full opacity-60"></div>
+<div class="glass-card p-8 rounded-xl border border-outline-variant/15 transition-all duration-300 hover:translate-x-2">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<h3 class="text-on-surface font-headline text-2xl font-bold">Software Development Intern</h3>
+<p class="text-primary font-body font-medium">Olimem Enterprise Solutions</p>
+</div>
+<div class="bg-surface-container-highest px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">account_balance</span>
+<span class="text-on-surface-variant text-[0.75rem] font-bold">Gov Systems</span>
+</div>
+</div>
+<p class="text-on-surface/80 font-body mb-8 leading-relaxed max-w-2xl">
+              Assisted in the development and maintenance of large-scale government systems. Contributed to legacy code migration and implemented new modular features within secure environments.
+            </p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high text-on-surface-variant text-[0.75rem] px-3 py-1 rounded-sm font-bold uppercase tracking-tighter">Java</span>
+<span class="bg-surface-container-high text-on-surface-variant text-[0.75rem] px-3 py-1 rounded-sm font-bold uppercase tracking-tighter">Spring Boot</span>
+<span class="bg-surface-container-high text-on-surface-variant text-[0.75rem] px-3 py-1 rounded-sm font-bold uppercase tracking-tighter">MySQL</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Stats Bento Section -->
+<div class="mt-32 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-low p-8 rounded-2xl border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">terminal</span>
+<h4 class="text-on-surface font-headline font-bold text-xl mb-1">Architecture</h4>
+<p class="text-on-surface-variant font-body text-sm">System design for high-load platforms.</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-2xl border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary text-3xl mb-4">query_stats</span>
+<h4 class="text-on-surface font-headline font-bold text-xl mb-1">Data Insights</h4>
+<p class="text-on-surface-variant font-body text-sm">Turning complex data into intelligence.</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-2xl border border-outline-variant/10">
+<span class="material-symbols-outlined text-tertiary text-3xl mb-4">devices</span>
+<h4 class="text-on-surface font-headline font-bold text-xl mb-1">User Focus</h4>
+<p class="text-on-surface-variant font-body text-sm">UX-driven development for final users.</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#141f38]/60 backdrop-blur-lg border-t border-[#40485d]/15 z-50 shadow-[0_-4px_40px_rgba(0,229,255,0.08)]">
+<div class="flex flex-col items-center justify-center text-[#a3aac4] opacity-60">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#a3aac4] opacity-60">
+<span class="material-symbols-outlined">code</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold">Projects</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#00E5FF] bg-[#00E5FF]/10 rounded-xl px-3 py-1 shadow-[0_0_15px_rgba(0,229,238,0.3)]">
+<span class="material-symbols-outlined">work</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold">Experience</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#a3aac4] opacity-60">
+<span class="material-symbols-outlined">bolt</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold">Skills</span>
+</div>
+</nav>
+</body></html>
