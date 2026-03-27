@@ -35,16 +35,25 @@ export function ExperienceProjectsTabs() {
 
         <div className="relative max-w-5xl">
           {portfolioData.experiences.map((exp, index) => (
-            <div key={index} className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-14 mb-20 group">
-              <div className="md:text-right pt-2">
-                <span className="text-on-surface-variant font-label text-xs uppercase tracking-widest font-bold">{exp.duration}</span>
+            <div key={index} className="grid grid-cols-1 md:grid-cols-[120px_24px_1fr] gap-x-6 gap-y-4 mb-16 group">
+              {/* Date */}
+              <div className="md:text-right pt-3 hidden md:block">
+                <span className="text-on-surface-variant font-label text-xs uppercase tracking-widest font-bold leading-relaxed">{exp.duration}</span>
               </div>
-              <div className="relative pl-8 md:pl-0">
-                <div className={`absolute -left-3 md:-left-[4.1rem] top-3 w-3 h-3 rounded-full ring-4 ring-primary/20 ${index === 0 ? 'bg-tertiary animate-pulse' : 'bg-tertiary opacity-60'}`} />
+
+              {/* Timeline column: dot + line */}
+              <div className="hidden md:flex flex-col items-center">
+                <div className={`w-3 h-3 rounded-full mt-3 shrink-0 ring-4 ring-primary/20 z-10 ${index === 0 ? 'bg-tertiary animate-pulse' : 'bg-tertiary opacity-60'}`} />
                 {index < portfolioData.experiences.length - 1 && (
-                  <div className="absolute -left-[0.65rem] md:-left-[3.75rem] top-8 bottom-[-5rem] w-[1px] timeline-dashed opacity-20" />
+                  <div className="flex-1 w-px timeline-dashed opacity-20 mt-1" />
                 )}
-                <div className="glass-card p-8 rounded-xl border border-outline-variant/15 transition-all duration-300 hover:translate-x-2 neon-glow">
+              </div>
+
+              {/* Card */}
+              <div className="relative">
+                {/* Mobile date */}
+                <span className="md:hidden block text-on-surface-variant font-label text-xs uppercase tracking-widest font-bold mb-3">{exp.duration}</span>
+                <div className="glass-card p-8 rounded-xl border border-outline-variant/15 transition-all duration-300 hover:translate-x-1 neon-glow">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                     <div>
                       <h3 className="text-on-surface font-headline text-2xl font-bold">{exp.position}</h3>
@@ -100,6 +109,7 @@ export function ExperienceProjectsTabs() {
               const isNarrow = index === 1
               const isHalf = index >= 2
               const colSpan = isFeatured ? 'md:col-span-8' : isNarrow ? 'md:col-span-4' : 'md:col-span-6'
+
               return (
                 <div key={project.id} className={`${colSpan} group`}>
                   {isHalf ? (
@@ -111,12 +121,12 @@ export function ExperienceProjectsTabs() {
                         <div className="p-8 flex flex-col justify-between">
                           <div>
                             <span className={`text-[10px] font-bold tracking-[0.2em] px-3 py-1 rounded-full uppercase mb-4 inline-block ${project.type === 'work' ? 'bg-primary/10 text-primary' : 'bg-secondary/10 text-secondary'}`}>
-                              {project.type === 'work' ? 'Work' : 'Personal'}
+                              {project.type === 'work' ? '💼 Work' : '🚀 Personal'}
                             </span>
                             <h2 className="font-headline text-2xl font-bold text-on-surface mb-3 leading-tight">{project.title}</h2>
                             <p className="text-on-surface-variant text-sm leading-relaxed mb-6 line-clamp-3">{project.description}</p>
                             <div className="flex flex-wrap gap-2 mb-6">
-                              {project.technologies.slice(0, 3).map((tech: string, i: number) => (
+                              {project.technologies.slice(0, 3).map((tech, i) => (
                                 <span key={i} className="bg-surface-container-highest px-3 py-1 rounded-lg text-xs font-label text-on-surface-variant">{tech}</span>
                               ))}
                             </div>
@@ -136,7 +146,7 @@ export function ExperienceProjectsTabs() {
                         {isFeatured && (
                           <div className="absolute bottom-6 left-6">
                             <span className="bg-secondary/10 text-secondary text-[10px] font-bold tracking-[0.2em] px-3 py-1 rounded-full uppercase mb-2 inline-block">
-                              {project.type === 'work' ? 'Work' : 'Personal'}
+                              {project.type === 'work' ? '💼 Work' : '🚀 Personal'}
                             </span>
                             <h2 className="font-headline text-3xl font-bold text-on-surface leading-tight">{project.title}</h2>
                           </div>
@@ -146,14 +156,14 @@ export function ExperienceProjectsTabs() {
                         {!isFeatured && (
                           <>
                             <span className={`text-[10px] font-bold tracking-[0.2em] px-3 py-1 rounded-full uppercase mb-4 self-start ${project.type === 'work' ? 'bg-primary/10 text-primary' : 'bg-tertiary/10 text-tertiary'}`}>
-                              {project.type === 'work' ? 'Work' : 'Personal'}
+                              {project.type === 'work' ? '💼 Work' : '🚀 Personal'}
                             </span>
                             <h2 className="font-headline text-2xl font-bold text-on-surface mb-3">{project.title}</h2>
                           </>
                         )}
                         <p className="text-on-surface-variant text-sm leading-relaxed mb-6 line-clamp-3">{project.description}</p>
                         <div className="flex flex-wrap gap-2 mb-auto pb-6">
-                          {project.technologies.slice(0, 3).map((tech: string, i: number) => (
+                          {project.technologies.slice(0, 3).map((tech, i) => (
                             <span key={i} className="bg-surface-container-highest px-3 py-1 rounded-lg text-xs font-label text-on-surface-variant">{tech}</span>
                           ))}
                         </div>
@@ -184,9 +194,9 @@ export function ExperienceProjectsTabs() {
 
           <section className="mt-32 mb-8 text-center">
             <h3 className="font-headline text-2xl font-bold mb-4">Have a project in mind?</h3>
-            <p className="text-on-surface-variant mb-8 max-w-md mx-auto">I am currently open to new collaborations and high-impact engineering opportunities.</p>
+            <p className="text-on-surface-variant mb-8 max-w-md mx-auto">I'm currently open to new collaborations and high-impact engineering opportunities.</p>
             <a href="#contact" className="inline-flex items-center gap-3 text-secondary font-headline font-bold text-lg hover:gap-5 transition-all">
-              Lets talk <span className="material-symbols-outlined">alternate_email</span>
+              Let's talk <span className="material-symbols-outlined">alternate_email</span>
             </a>
           </section>
         </div>
