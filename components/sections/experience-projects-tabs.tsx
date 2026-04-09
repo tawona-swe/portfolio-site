@@ -131,7 +131,7 @@ export function ExperienceProjectsTabs() {
                               ))}
                             </div>
                           </div>
-                          <div className="flex gap-3">
+                          <div className="flex gap-2">
                             <a href={project.demo} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-primary text-on-primary rounded-xl text-xs font-bold tracking-widest">DEMO</a>
                             <a href={project.github} target="_blank" rel="noopener noreferrer" className="px-4 py-2 border border-outline-variant/30 text-on-surface-variant rounded-xl text-xs font-bold tracking-widest hover:border-primary/50 transition-colors">SOURCE</a>
                           </div>
