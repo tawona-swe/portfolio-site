@@ -39,19 +39,21 @@ export function AboutSkillsCombined() {
   return (
     <>
       {/* About Section */}
-      <section id="about" className="py-28 px-8 md:px-20 bg-surface-container-low">
+      <section id="about" className="section-glow py-28 px-8 md:px-20 relative" style={{ background: 'linear-gradient(180deg, #060e20 0%, #091328 100%)' }}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           {/* Left: photo */}
           <div className="lg:col-span-5 space-y-12">
             <h2 className="text-secondary font-headline text-3xl font-bold tracking-tight uppercase">Legacy &amp; Foundation</h2>
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-xl opacity-20 group-hover:opacity-40 blur transition duration-500" />
-              <div className="relative overflow-hidden rounded-xl bg-surface-container-highest aspect-[4/5]">
+              <div className="relative overflow-hidden rounded-xl bg-surface-container-highest aspect-[4/5] avatar-glow">
                 <img
                   src={personal.avatar}
                   alt={personal.name}
                   className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                 />
+                {/* Overlay shimmer */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#060e20]/60 via-transparent to-transparent" />
               </div>
             </div>
           </div>
@@ -162,7 +164,7 @@ export function AboutSkillsCombined() {
                 { value: '99.9%', label: 'Uptime Record' },
                 { value: '1st', label: 'Class Honours' },
               ].map((stat, i) => (
-                <div key={i} className="p-6 rounded-xl bg-surface-container-lowest/40 border border-outline-variant/10 text-center">
+                <div key={i} className="stat-card p-6 rounded-xl text-center">
                   <p className="text-3xl font-headline font-bold text-primary mb-1">{stat.value}</p>
                   <p className="text-[10px] uppercase tracking-widest text-on-surface-variant">{stat.label}</p>
                 </div>

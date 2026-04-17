@@ -16,29 +16,92 @@
   }
 }
 
-/* Scrollbar */
+/* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #060e20; }
-::-webkit-scrollbar-thumb { background: #40485d; border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #a1faff, #69f6b8); border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: #a1faff; }
 
 html { scroll-behavior: smooth; }
 
-/* Glass card */
+/* ── Hero background: grid + noise ── */
+.hero-bg {
+  background-color: #060e20;
+  background-image:
+    /* subtle dot grid */
+    radial-gradient(circle, rgba(161,250,255,0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  position: relative;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(161,250,255,0.07) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 40% at 20% 80%, rgba(105,246,184,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ── Glass card ── */
 .glass-card {
-  background: rgba(25, 37, 64, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(15, 25, 48, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(161, 250, 255, 0.08);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Neon glow on hover */
+/* shimmer top edge */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(161,250,255,0.4), rgba(105,246,184,0.3), transparent);
+  opacity: 0.6;
+}
+
+/* ── Shiny card (for hero stat/badge cards) ── */
+.shiny-card {
+  background: linear-gradient(135deg, rgba(25,37,64,0.8) 0%, rgba(15,25,48,0.9) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(161,250,255,0.12);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(161,250,255,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.shiny-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(161,250,255,0.03) 60deg, transparent 120deg);
+  animation: spin-slow 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Neon glow on hover ── */
 .neon-glow:hover {
-  box-shadow: 0 0 20px rgba(0, 229, 238, 0.2);
+  box-shadow: 0 0 0 1px rgba(161,250,255,0.15), 0 8px 40px rgba(0,229,238,0.12);
+  border-color: rgba(161,250,255,0.2) !important;
+  transition: all 0.3s ease;
 }
 
-/* Gradient text */
+/* ── Gradient text ── */
 .gradient-text {
-  background: linear-gradient(135deg, #a1faff 0%, #00f4fe 100%);
+  background: linear-gradient(135deg, #a1faff 0%, #00f4fe 50%, #69f6b8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -51,40 +114,105 @@ html { scroll-behavior: smooth; }
   background-clip: text;
 }
 
-/* CTA button gradient */
+/* ── CTA button ── */
 .btn-primary {
   background: linear-gradient(135deg, #a1faff 0%, #00f4fe 100%);
-  color: #006165;
+  color: #004346;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
+  position: relative;
+  overflow: hidden;
 }
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before { left: 100%; }
 
 .btn-primary:hover {
-  box-shadow: 0 0 30px rgba(161, 250, 255, 0.3);
+  box-shadow: 0 0 40px rgba(161,250,255,0.4), 0 0 80px rgba(161,250,255,0.15);
 }
 
-/* Timeline dashed line */
+/* ── Timeline dashed line ── */
 .timeline-dashed {
-  background-image: linear-gradient(to bottom, #40485d 33%, rgba(255,255,255,0) 0%);
+  background-image: linear-gradient(to bottom, rgba(161,250,255,0.3) 33%, rgba(255,255,255,0) 0%);
   background-position: right;
   background-size: 1px 12px;
   background-repeat: repeat-y;
 }
 
-/* Selection */
+/* ── Selection ── */
 ::selection {
-  background: rgba(161, 250, 255, 0.3);
+  background: rgba(161, 250, 255, 0.25);
   color: #a1faff;
 }
 
-/* Skill bar track */
+/* ── Skill bar ── */
 .skill-track {
   height: 4px;
-  background: #192540;
+  background: rgba(25,37,64,0.8);
   overflow: hidden;
+  border-radius: 2px;
 }
 
 .skill-fill {
   height: 100%;
-  background: linear-gradient(to right, #69f6b8, #58e7ab);
+  background: linear-gradient(to right, #69f6b8, #a1faff);
+  border-radius: 2px;
+}
+
+/* ── Section divider glow ── */
+.section-glow {
+  position: relative;
+}
+
+.section-glow::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(161,250,255,0.2), rgba(105,246,184,0.15), transparent);
+}
+
+/* ── Floating orb animation ── */
+@keyframes orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+
+.orb-animate {
+  animation: orb-float 12s ease-in-out infinite;
+}
+
+.orb-animate-slow {
+  animation: orb-float 18s ease-in-out infinite reverse;
+}
+
+/* ── Avatar glow ring ── */
+.avatar-glow {
+  box-shadow:
+    0 0 0 1px rgba(161,250,255,0.15),
+    0 0 30px rgba(161,250,255,0.1),
+    0 0 60px rgba(105,246,184,0.08);
+}
+
+/* ── Stat card shine ── */
+.stat-card {
+  background: linear-gradient(135deg, rgba(25,37,64,0.6), rgba(9,19,40,0.8));
+  border: 1px solid rgba(161,250,255,0.1);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: rgba(161,250,255,0.25);
+  box-shadow: 0 0 20px rgba(161,250,255,0.08);
+  transform: translateY(-2px);
 }

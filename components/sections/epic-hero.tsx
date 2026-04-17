@@ -22,15 +22,20 @@ export function EpicHero() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="home" className="relative min-h-screen flex flex-col justify-center px-8 md:px-20 overflow-hidden bg-surface">
+    <section ref={sectionRef} id="home" className="hero-bg relative min-h-screen flex flex-col justify-center px-8 md:px-20 overflow-hidden">
       <MouseParticles containerRef={sectionRef} />
-      {/* Ambient glows */}
-      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
-      <div className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-secondary/5 rounded-full blur-[100px] -z-10 pointer-events-none" />
 
-      <div className="max-w-4xl space-y-8">
+      {/* Large animated orbs */}
+      <div className="orb-animate absolute top-[-100px] right-[-100px] w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(161,250,255,0.06) 0%, transparent 70%)' }} />
+      <div className="orb-animate-slow absolute bottom-[-150px] left-[-50px] w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(105,246,184,0.05) 0%, transparent 70%)' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse, rgba(161,250,255,0.03) 0%, transparent 60%)' }} />
+
+      <div className="relative z-10 max-w-4xl space-y-8">
         {/* Status badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/15">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full shiny-card">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary" />
